@@ -27,7 +27,6 @@ int pedirOpcion(const eMenu menu)
 
     while(buscarEnArrayInt(retorno, menu.codigos, menu.cantOpciones) == -1)
     {
-        ejecutarEnConsola(LIMPIAR_PANTALLA);
         mostrarMenu(menu);
         //armo lista de opciones en el renglón por si el usuario se equivoca muchas veces
         //y el menú queda fuera de vista

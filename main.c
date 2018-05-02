@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include "General.h"
 #include "Menu.h"
+#include "EstructuraGenerica.h"
 //#include "ESTRUCTURA_1.h"
 //#include "ESTRUCTURA_2.h"
 
