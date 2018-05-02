@@ -1,8 +1,9 @@
 #include "EstructuraGenerica.h"
+#include "General.h"
+#include "Menu.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "D:\github\Toolbox\General.h"
 
 int eGen_init(eGenerica listado[], int limite)
 {
@@ -124,7 +125,7 @@ void pedirNombre(char *retorno)
 {
 	char mensajeReingreso[100];
     strcat(mensajeReingreso, "\nReingrese un nombre de hasta ");
-	strcat(mensajeReingreso, LARGO_NOMBRE_ESTRUCTURA_GENERICA);
+	strcat(mensajeReingreso, (char *)LARGO_NOMBRE_ESTRUCTURA_GENERICA);
 	strcat(mensajeReingreso, " caracteres");
 
 	pedirStringValido(retorno, "\nIngrese nombre: ", mensajeReingreso, LARGO_NOMBRE_ESTRUCTURA_GENERICA);
@@ -168,7 +169,7 @@ void eGen_alta(eGenerica listado[], int limite)
 		if(confirmacion == 'S')
 		{
 			listado[posicion] = registro;
-			ordenarPorPromedio(listado);
+			//aca se ordenaria la lista
 			imprimirEnPantalla("\nEl EstructuraGenerica se dio de alta.");
 		}
 		else
@@ -239,7 +240,6 @@ void eGen_modificarUno(eGenerica *registro)
                             {"\nQu‚ desea modificar?"} //titulo del menu
                            };
     int opcion;
-    char
 
     ejecutarEnConsola(LIMPIAR_PANTALLA);
     imprimirTitulo("MODIFICANDO REGISTRO");
@@ -255,7 +255,7 @@ void eGen_modificarUno(eGenerica *registro)
     switch(opcion)
     {
         case 1:
-            registro->idGenerica = pedirInt();
+            registro->idGenerica = pedirIntValido("Ingrese nuevo ID", "El ID debe ser un n£mero entero mayor que cero", 1, 99999999);
             break;
         case 2:
             pedirNombre((char *)&registro->nombre);
@@ -269,7 +269,7 @@ void eGen_modificarUno(eGenerica *registro)
             break;
         */
         case 5:
-            registro->estado = 1;
+            registro->estado = OCUPADO;
             break;
         case 9:
             break;
@@ -287,15 +287,15 @@ void eGen_modificacion(eGenerica listado[], const int limite)
 
     registro.idGenerica = pedirIntValido("\n\nIngrese el ID de EstructuraGenerica a modificar: ", "El ID debe ser un n¡mero mayor que cero", 1, 99999999);
 
-    posicion = eGen_buscarPorId(listado, listado, registro.idGenerica);
+    posicion = eGen_buscarPorId(listado, limite, registro.idGenerica);
     if(posicion != -1)
     {
         //traigo el registro del id elegido para no pisar directo sobre el listado
         registro = listado[posicion];
 
-        eGen_modificarUno(&alumnoModificar);
+        eGen_modificarUno(&registro);
 
-        if(listado[posicion].estado != alumnoModificar.estado)
+        if(listado[posicion].estado != registro.estado)
         {
             confirmacion = pedirConfirmacion("Confirma que desea rehabilitar al EstructuraGenerica?");
         }
@@ -304,7 +304,7 @@ void eGen_modificacion(eGenerica listado[], const int limite)
             /*
             if(aca se pregunta si hubo cambios que requieran reprocesos)
             {
-                aca se recalcularian promedios y reordenaria la lista por ej.
+                se recalcularian promedios por ej.
             }
             */
             ejecutarEnConsola(LIMPIAR_PANTALLA);
@@ -321,7 +321,7 @@ void eGen_modificacion(eGenerica listado[], const int limite)
         if(confirmacion == 'S')
         {
             listado[posicion] = registro;
-            ordenarPorPromedio(listado);
+            //aca podria ordenarse con los datos nuevos;
             imprimirEnPantalla("\nEl EstructuraGenerica se modificà.");
         }
         else
@@ -336,7 +336,7 @@ void eGen_modificacion(eGenerica listado[], const int limite)
     ejecutarEnConsola(HACER_PAUSA);
 }
 
-void eGen_ordenar(eGenerica listado[], int limite, int orden);
+void eGen_ordenar(eGenerica listado[], int limite, char orden[])
 {
 	int i;
 	int j;
@@ -402,4 +402,42 @@ void eGen_ordenar(eGenerica listado[], int limite, int orden);
 			}
 		}
 	}
+}
+
+void eGen_gestion(eGenerica listado[], const int limite)
+{
+    eMenu menuEstructuraGenerica = {
+                            4, //cantidad de opciones
+                            {1,2,3,9}, //codigos
+                            {"1. Alta","2. Baja","3. Modificaci¢n","9. Volver al men£ principal"}, //descripciones
+                            {TITULO_GESTION} //titulo del menu
+                            };
+    int opcion;
+    char volverAlMain = 'N';
+
+    do
+    {
+        ejecutarEnConsola(LIMPIAR_PANTALLA);
+        opcion = pedirOpcion(menuEstructuraGenerica);
+        switch(opcion)
+        {
+            case 1:
+                eGen_alta(listado, limite);
+                break;
+            case 2:
+                eGen_baja(listado, limite);
+                break;
+            case 3:
+                eGen_modificacion(listado, limite);
+                break;
+            case 4:
+                imprimirEnPantalla(menuEstructuraGenerica.descripciones[opcion-1]);ejecutarEnConsola(HACER_PAUSA);
+                break;
+            case 9:
+                break;
+        }
+
+    }
+    while(volverAlMain == 'N');
+    return 0;
 }
