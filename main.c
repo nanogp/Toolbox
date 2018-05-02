@@ -19,8 +19,9 @@ int main()
     char salirDelPrograma = 'N';
 
     //ARRAYS DE ESTRUCTURAS
-    eGenerica listaESTRUCTURA_1[LARGO_NOMBRE_ESTRUCTURA_GENERICA] = {};
-    eGenerica listaESTRUCTURA_2[LARGO_NOMBRE_ESTRUCTURA_GENERICA] = {};
+    eGenerica listaESTRUCTURA_1[NRO_MAX_ESTRUCTURA_GENERICA] = {};
+    eGenerica listaESTRUCTURA_2[NRO_MAX_ESTRUCTURA_GENERICA] = {};
+    eGenerica listaESTRUCTURA_3[NRO_MAX_ESTRUCTURA_GENERICA] = {};
 
     //INCIALIZAR
 
@@ -32,7 +33,6 @@ int main()
         {
             case 1:
                 imprimirEnPantalla(menuPrincipal.descripciones[opcion-1]);ejecutarEnConsola(HACER_PAUSA);
-                eGen_gestion(listaESTRUCTURA_1, NRO_MAX_ESTRUCTURA_GENERICA);
                 break;
             case 2:
                 imprimirEnPantalla(menuPrincipal.descripciones[opcion-1]);ejecutarEnConsola(HACER_PAUSA);

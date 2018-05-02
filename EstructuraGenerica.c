@@ -434,10 +434,10 @@ void eGen_gestion(eGenerica listado[], const int limite)
                 imprimirEnPantalla(menuEstructuraGenerica.descripciones[opcion-1]);ejecutarEnConsola(HACER_PAUSA);
                 break;
             case 9:
+                volverAlMain = 'S';
                 break;
         }
 
     }
     while(volverAlMain == 'N');
-    return 0;
 }
