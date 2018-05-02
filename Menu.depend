@@ -1,0 +1,22 @@
+# depslib dependency file v1.0
+1525281523 source:d:\github\toolbox\general.c
+	"General.h"
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1525281210 d:\github\toolbox\general.h
+
+1525281356 source:d:\github\toolbox\main.c
+	<stdio.h>
+	<stdlib.h>
+	"General.h"
+	"Menu.h"
+
+1525281191 d:\github\toolbox\menu.h
+
+1525281110 source:d:\github\toolbox\menu.c
+	<stdio.h>
+	"Menu.h"
+	"General.h"
+
