@@ -3,14 +3,15 @@
 #include <stdlib.h>
 #include <string.h>
 
+#define STRING_LARGO_MAXIMO 1000
 
-void ejecutarEnConsola(const char *lineaDeComando)
+void ejecutarEnConsola(char lineaDeComando[])
 {
     printf("\n");
     system(lineaDeComando);
 }
 
-char pedirConfirmacion(const char *mensajeAlUsuario)
+char pedirConfirmacion(char mensajeAlUsuario[])
 {
     char retorno;
 
@@ -42,7 +43,7 @@ char pedirConfirmacion(const char *mensajeAlUsuario)
     return retorno;
 }
 
-int pedirInt(const char mensajeIngreso[])
+int pedirInt(char mensajeIngreso[])
 {
     int retorno;
 
@@ -54,7 +55,7 @@ int pedirInt(const char mensajeIngreso[])
     return retorno;
 }
 
-int pedirIntValido(const char mensajeIngreso[], const char mensajeReingreso[], const int limiteInferior, const int limiteSuperior)
+int pedirIntValido(char mensajeIngreso[], char mensajeReingreso[], int limiteInferior, int limiteSuperior)
 {
     int retorno;
 
@@ -68,7 +69,7 @@ int pedirIntValido(const char mensajeIngreso[], const char mensajeReingreso[], c
     return retorno;
 }
 
-float pedirFloat(const char mensajeIngreso[])
+float pedirFloat(char mensajeIngreso[])
 {
     float retorno;
 
@@ -80,7 +81,7 @@ float pedirFloat(const char mensajeIngreso[])
     return retorno;
 }
 
-float pedirFloatValido(const char mensajeIngreso[], const char mensajeReingreso[], const float limiteInferior, const float limiteSuperior)
+float pedirFloatValido(char mensajeIngreso[], char mensajeReingreso[], float limiteInferior, float limiteSuperior)
 {
     float retorno;
 
@@ -94,16 +95,16 @@ float pedirFloatValido(const char mensajeIngreso[], const char mensajeReingreso[
     return retorno;
 }
 
-void pedirString(char *retorno, const char mensajeIngreso[])
+void pedirString(char retorno[], char mensajeIngreso[])
 {
     printf("%s", mensajeIngreso);
     fflush(stdin);
     gets(retorno);
 }
 
-void pedirStringValido(char *retorno, const char mensajeIngreso[], const char mensajeReingreso[], const int limite)
+void pedirStringValido(char retorno[], char mensajeIngreso[], char mensajeReingreso[], int limite)
 {
-    char stringIngresado[1000];
+    char stringIngresado[STRING_LARGO_MAXIMO];
 
     pedirString(stringIngresado, mensajeIngreso);
 
@@ -125,12 +126,12 @@ float calcularPromedio(float numero1, float numero2)
     return retorno;
 }
 
-int buscarEnArrayInt(const int buscar, const int array[], const int cant)
+int buscarEnArrayInt(int array[], int limite, int buscar)
 {
     int retorno = -1;
     int i;
 
-    for(i=0 ; i<cant ; i++)
+    for(i=0 ; i<limite ; i++)
     {
         if(array[i] == buscar)
         {
@@ -142,12 +143,12 @@ int buscarEnArrayInt(const int buscar, const int array[], const int cant)
     return retorno;
 }
 
-void imprimirEnPantalla(const char *texto)
+void imprimirEnPantalla(char texto[])
 {
     printf("%s", texto);
 }
 
-void generarTitulo(char *texto)
+void generarTitulo(char texto[])
 {
     int i;
     char nuevoTitulo[LARGO_TITULO] = "| ";
@@ -173,7 +174,7 @@ void generarTitulo(char *texto)
 
 }
 
-void imprimirTitulo(const char *texto)
+void imprimirTitulo(char texto[])
 {
     char titulo[LARGO_TITULO];
     strcpy(titulo, texto);

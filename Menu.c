@@ -2,19 +2,19 @@
 #include "Menu.h"
 #include "General.h"
 
-void mostrarMenu(const eMenu menu)
+void mostrarMenu(eMenu menu)
 {
     int i;
 
     imprimirTitulo(menu.titulo);
-    for(i=0 ; i < menu.cantOpciones ; i++)
+    for(i=0 ; i < menu.limiteOpciones ; i++)
     {
         printf("\n%s", menu.descripciones[i]);
     }
     printf("\n");
 }
 
-int pedirOpcion(const eMenu menu)
+int pedirOpcion(eMenu menu)
 {
     int retorno;
     int i;
@@ -23,14 +23,14 @@ int pedirOpcion(const eMenu menu)
     printf("\nElija un n£mero de opci¢n del men£: ");
     scanf("%d", &retorno);
 
-//printf("menu.cantOpciones %d",menu.codigos[4]);
+//printf("menu.limiteOpciones %d",menu.codigos[4]);
 
-    while(buscarEnArrayInt(retorno, menu.codigos, menu.cantOpciones) == -1)
+    while(buscarEnArrayInt(menu.codigos, menu.limiteOpciones, retorno) == -1)
     {
         mostrarMenu(menu);
         //armo lista de opciones en el renglón por si el usuario se equivoca muchas veces
         //y el menú queda fuera de vista
-        for(i = 0 ; i < menu.cantOpciones ; i++)
+        for(i = 0 ; i < menu.limiteOpciones ; i++)
         {
             if(i == 0)
             {
@@ -38,7 +38,7 @@ int pedirOpcion(const eMenu menu)
             }
             else
             {
-                if(i < (menu.cantOpciones)-1)
+                if(i < (menu.limiteOpciones)-1)
                 {
                     printf("-%d", menu.codigos[i]);
                 }

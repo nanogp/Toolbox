@@ -1,32 +1,31 @@
 #ifndef MENU_H_INCLUDED
-#   define MENU_H_INCLUDED
-#   define LARGO_ITEM_MENU 100
-#   define NRO_MAX_OPCIONES_MENU 10
+#define MENU_H_INCLUDED
+#define MENU_LARGO_DESCRIPCION 100
+#define MENU_MAX_OPCIONES 10
 
-    typedef struct
-    {
-        int cantOpciones;
-        int codigos[NRO_MAX_OPCIONES_MENU];
-        char descripciones[NRO_MAX_OPCIONES_MENU][LARGO_ITEM_MENU];
-        char titulo[LARGO_ITEM_MENU];
-    } eMenu;
-
-#endif // MENU_H_INCLUDED
-
+typedef struct
+{
+    int limiteOpciones;
+    int codigos[MENU_MAX_OPCIONES];
+    char descripciones[MENU_MAX_OPCIONES][MENU_LARGO_DESCRIPCION];
+    char titulo[MENU_LARGO_DESCRIPCION];
+} eMenu;
 
 /** \brief muestra en pantalla un tipo de dato menu
  *
- * \param menu const eMenu: el menu a mostrar
+ * \param menu  eMenu: el menu a mostrar
  * \return void
  *
  */
-void mostrarMenu(const eMenu menu);
+void mostrarMenu(eMenu menu);
 
 
 /** \brief pide al usuario que elija una opcion de menu recibido como parametro
  *
- * \param menu const eMenu: el menu de opciones a mostrar al usuario para pedir y validar la opcion seleccionada
+ * \param menu  eMenu: el menu de opciones a mostrar al usuario para pedir y validar la opcion seleccionada
  * \return int: el numero de opcion validada
  *
  */
-int pedirOpcion(const eMenu menu);
+int pedirOpcion(eMenu menu);
+
+#endif // MENU_H_INCLUDED

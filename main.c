@@ -10,20 +10,19 @@
 int main()
 {
     eMenu menuPrincipal = {
-                            5, //cantidad de opciones
-                            {1,2,3,9}, //codigos
-                            {"1. Gesti¢n ESTRUCTURA_1","2. Gesti¢n ESTRUCTURA_2","3. Consultas","9. Salir"}, //descripciones
+                            5, //limiteidad de opciones
+                            {1,2,3,4,0}, //codigos
+                            {"1. Alta Generica","2. Baja Generica","3. Modificaci¢n Generica","4. Listado Generica","0. Salir"}, //descripciones
                             {"MENU GENERICO"} //titulo del menu
                             };
     int opcion;
     char salirDelPrograma = 'N';
 
     //ARRAYS DE ESTRUCTURAS
-    eGenerica listaESTRUCTURA_1[NRO_MAX_ESTRUCTURA_GENERICA] = {};
-    eGenerica listaESTRUCTURA_2[NRO_MAX_ESTRUCTURA_GENERICA] = {};
-    eGenerica listaESTRUCTURA_3[NRO_MAX_ESTRUCTURA_GENERICA] = {};
+    eGenerica listadoGenerica[GENERICA_CANT_MAX] = {};
 
     //INCIALIZAR
+    eGenerica_init(listadoGenerica, GENERICA_CANT_MAX);
 
     do
     {
@@ -32,18 +31,18 @@ int main()
         switch(opcion)
         {
             case 1:
-                imprimirEnPantalla(menuPrincipal.descripciones[opcion-1]);ejecutarEnConsola(HACER_PAUSA);
+                eGenerica_alta(listadoGenerica, GENERICA_CANT_MAX);
                 break;
             case 2:
-                imprimirEnPantalla(menuPrincipal.descripciones[opcion-1]);ejecutarEnConsola(HACER_PAUSA);
+                eGenerica_baja(listadoGenerica, GENERICA_CANT_MAX);
                 break;
             case 3:
-                imprimirEnPantalla(menuPrincipal.descripciones[opcion-1]);ejecutarEnConsola(HACER_PAUSA);
+                eGenerica_modificacion(listadoGenerica, GENERICA_CANT_MAX);
                 break;
             case 4:
-                imprimirEnPantalla(menuPrincipal.descripciones[opcion-1]);ejecutarEnConsola(HACER_PAUSA);
+                eGenerica_mostrarListado(listadoGenerica, GENERICA_CANT_MAX);
                 break;
-            case 9:
+            case 0:
                 salirDelPrograma = pedirConfirmacion("Confirma que desea salir del programa?");
                 break;
         }

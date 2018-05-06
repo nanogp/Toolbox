@@ -31,3 +31,35 @@
 	"Menu.h"
 	"General.h"
 
+1525563103 source:c:\github\toolbox\general.c
+	"General.h"
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1525633012 c:\github\toolbox\general.h
+
+1525633025 source:c:\github\toolbox\estructuragenerica.c
+	"EstructuraGenerica.h"
+	"General.h"
+	"Menu.h"
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1525632742 c:\github\toolbox\estructuragenerica.h
+
+1525631712 c:\github\toolbox\menu.h
+
+1525632157 source:c:\github\toolbox\main.c
+	<stdio.h>
+	<stdlib.h>
+	"General.h"
+	"Menu.h"
+	"EstructuraGenerica.h"
+
+1525631538 source:c:\github\toolbox\menu.c
+	<stdio.h>
+	"Menu.h"
+	"General.h"
+
