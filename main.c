@@ -9,7 +9,7 @@
 #define MAIN_MENU_GESTION_DETALLE1 DEFINIR_MACRO_STRING(1. Gestionar Generica)
 #define MAIN_MENU_GESTION_DETALLE2 DEFINIR_MACRO_STRING(2. Gestionar Depende)
 #define MAIN_MENU_GESTION_DETALLE3 DEFINIR_MACRO_STRING(3. Gestionar Estadisticas)
-#define MAIN_MENU_GESTION_DETALLE4 DEFINIR_MACRO_STRING(0. Volver al menu principal)
+#define MAIN_MENU_GESTION_DETALLE4 DEFINIR_MACRO_STRING(0. Salir del programa)
 
 int main()
 {
@@ -29,6 +29,11 @@ int main()
     eGenerica_init(listadoGenerica, GENERICA_CANT_MAX);
     eDepende_init(listadoDepende, DEPENDE_CANT_MAX);
     eEstadisticas_init(listadoEstadisticas, ESTADISTICAS_CANT_MAX);
+
+    //CARGAR DATOS POR HARDCODE PARA DEBUG
+    eGenerica_initHardcode(listadoGenerica);
+    eDepende_initHardcode(listadoDepende);
+    eEstadisticas_initHardcode(listadoEstadisticas);
 
     do
     {

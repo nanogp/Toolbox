@@ -5,18 +5,48 @@
 #include <stdlib.h>
 #include <string.h>
 
-int eGenerica_init(eGenerica listado[], int limite)
-{
-	int retorno = -1;
-	int i;
+void eGenerica_initHardcode(eGenerica listado[])
+{                            /*nombre, clave, ID, estado*/
+	listado[0] = (eGenerica){{"Jose Luis tiene 1"}, {"UnaClave"}, 11, OCUPADO};
+	listado[1] = (eGenerica){{"Bobby Fisher va con 3"}, {"UnaClave"}, 12, OCUPADO};
+	listado[2] = (eGenerica){{"Donia Rosa tiene 2"}, {"UnaClave"}, 13, OCUPADO};
+	listado[3] = (eGenerica){{"Fulano tiene Mengano"}, {"UnaClave"}, 14, OCUPADO};
+	listado[4] = (eGenerica){{"Roque sin Penia tiene 0"}, {"UnaClave"}, 15, OCUPADO};
+	eGenerica_ordenar(listado, GENERICA_CANT_MAX, GENERICA_ORDEN);
+}
 
-	retorno = 0;
+void eDepende_initHardcode(eDepende listado[])
+{                            /*nombre, clave, ID, FK, estado*/
+	listado[0] = (eDepende){{"De Jose Luis"}, 101, 11, OCUPADO};
+	listado[1] = (eDepende){{"De Bobby Fisher uno"}, 102, 12, OCUPADO};
+	listado[2] = (eDepende){{"De Bobby Fisher dos"}, 103, 12, OCUPADO};
+	listado[3] = (eDepende){{"De Bobby Fisher tres"}, 104, 12, OCUPADO};
+	listado[4] = (eDepende){{"Depende de Donia Rosa uno"}, 105, 13, OCUPADO};
+	listado[5] = (eDepende){{"Depende de Donia Rosa dos"}, 106, 13, OCUPADO};
+	listado[6] = (eDepende){{"Este es Mengano"}, 107, 14, OCUPADO};
+	eDepende_ordenar(listado, DEPENDE_CANT_MAX, DEPENDE_ORDEN);
+}
+
+void eEstadisticas_initHardcode(eEstadisticas listado[])
+{								/*nombre, clave, ID, FK, estado*/
+	listado[0] = (eEstadisticas){{"Estadisticas de Jose Luis"}, 1001, 101, OCUPADO};
+	listado[1] = (eEstadisticas){{"Estadisticas Bobby Fisher uno"}, 1002, 102, OCUPADO};
+	listado[2] = (eEstadisticas){{"Estadisticas Bobby Fisher uno"}, 1003, 102, OCUPADO};
+	listado[3] = (eEstadisticas){{"Estadisticas Bobby Fisher dos"}, 1004, 103, OCUPADO};
+	listado[4] = (eEstadisticas){{"Estadisticas Bobby Fisher tres"}, 1005, 104, OCUPADO};
+	listado[5] = (eEstadisticas){{"Estadisticas Bobby Fisher tres"}, 1006, 104, OCUPADO};
+	listado[6] = (eEstadisticas){{"Estadisticas Bobby Fisher tres"}, 1007, 104, OCUPADO};
+	eEstadisticas_ordenar(listado, ESTADISTICAS_CANT_MAX, ESTADISTICAS_ORDEN);
+}
+
+void eGenerica_init(eGenerica listado[], int limite)
+{
+	int i;
 	for(i=0 ; i<limite ; i++)
 	{
 		listado[i].estado= LIBRE;
 		listado[i].idGenerica= 0;
 	}
-	return retorno;
 }
 
 int eGenerica_buscarLugarLibre(eGenerica listado[], int limite)
@@ -490,18 +520,14 @@ void eGenerica_gestion(eGenerica listado[], int limite)
 
 /************************************************************************************************************************/
 
-int eDepende_init(eDepende listado[], int limite)
+void eDepende_init(eDepende listado[], int limite)
 {
-	int retorno = -1;
 	int i;
-
-	retorno = 0;
 	for(i=0 ; i<limite ; i++)
 	{
 		listado[i].estado= LIBRE;
 		listado[i].idDepende= 0;
 	}
-	return retorno;
 }
 
 int eDepende_buscarLugarLibre(eDepende listado[], int limite)
@@ -957,18 +983,14 @@ void eDepende_gestion(eDepende listadoDepende[], int limiteDepende, eGenerica li
 
 /************************************************************************************************************************/
 
-int eEstadisticas_init(eEstadisticas listado[], int limite)
+void eEstadisticas_init(eEstadisticas listado[], int limite)
 {
-	int retorno = -1;
 	int i;
-
-	retorno = 0;
 	for(i=0 ; i<limite ; i++)
 	{
 		listado[i].estado= LIBRE;
 		listado[i].idEstadisticas= 0;
 	}
-	return retorno;
 }
 
 int eEstadisticas_buscarLugarLibre(eEstadisticas listado[], int limite)

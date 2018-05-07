@@ -163,15 +163,18 @@ typedef struct
     int estado;
 }eEstadisticas;
 
+void eGenerica_initHardcode(eGenerica listado[]);
+void eDepende_initHardcode(eDepende listado[]);
+void eEstadisticas_initHardcode(eEstadisticas listado[]);
 
 /** \brief
  *
  * \param listado[] eGenerica
  * \param limite int
- * \return int
+ * \return void
  *
  */
-int eGenerica_init(eGenerica listado[], int limite);
+void eGenerica_init(eGenerica listado[], int limite);
 
 /** \brief
  *
@@ -349,10 +352,10 @@ void eGenerica_gestion(eGenerica listado[], int limite);
  *
  * \param listado[] eDepende
  * \param limite int
- * \return int
+ * \return void
  *
  */
-int eDepende_init(eDepende listado[], int limite);
+void eDepende_init(eDepende listado[], int limite);
 
 /** \brief
  *
@@ -545,10 +548,10 @@ void eDepende_gestion(eDepende listadoDepende[], int limiteDepende, eGenerica li
  *
  * \param listado[] eEstadisticas
  * \param limite int
- * \return int
+ * \return void
  *
  */
-int eEstadisticas_init(eEstadisticas listado[], int limite);
+void eEstadisticas_init(eEstadisticas listado[], int limite);
 
 /** \brief
  *

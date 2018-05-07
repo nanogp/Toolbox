@@ -39,7 +39,7 @@
 
 1525656481 c:\github\toolbox\general.h
 
-1525705782 source:c:\github\toolbox\estructuragenerica.c
+1525708612 source:c:\github\toolbox\estructuragenerica.c
 	"EstructuraGenerica.h"
 	"General.h"
 	"Menu.h"
@@ -47,11 +47,11 @@
 	<stdlib.h>
 	<string.h>
 
-1525705920 c:\github\toolbox\estructuragenerica.h
+1525709507 c:\github\toolbox\estructuragenerica.h
 
 1525656481 c:\github\toolbox\menu.h
 
-1525660339 source:c:\github\toolbox\main.c
+1525709089 source:c:\github\toolbox\main.c
 	<stdio.h>
 	<stdlib.h>
 	"General.h"
