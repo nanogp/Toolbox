@@ -27,6 +27,9 @@
 #define GENERICA_MSJ_NOMBRE_NO_EXISTE DEFINIR_MACRO_STRING(\nEl nombre ingresado no existe)
 #define GENERICA_MSJ_INGRESE_NOMBRE DEFINIR_MACRO_STRING(\nIngrese nombre: \0)
 #define GENERICA_MSJ_REINGRESE_NOMBRE DEFINIR_MACRO_STRING(\nNombre muy largo. Reingrese por favor: \0)
+#define GENERICA_MSJ_INGRESE_CLAVE DEFINIR_MACRO_STRING(\nIngrese la clave: \0)
+#define GENERICA_MSJ_REINGRESE_CLAVE DEFINIR_MACRO_STRING(\nClave muy larga. Reingrese por favor: \0)
+#define GENERICA_MSJ_CLAVE_NO_COINCIDE DEFINIR_MACRO_STRING(\nLa clave ingresada no es correcta\0)
 #define GENERICA_MSJ_REINTENTAR_GESTION DEFINIR_MACRO_STRING(Desea reintentar la gestion?)
 #define GENERICA_MSJ_ALTA_OK DEFINIR_MACRO_STRING(\nEl Generica se dio de alta)
 #define GENERICA_MSJ_CONFIRMAR_BAJA DEFINIR_MACRO_STRING(Confirma que desea dar de baja dicho Generica?)
@@ -268,6 +271,14 @@ void eGenerica_listar(eGenerica listado[], int limite);
  *
  */
 void eGenerica_pedirNombre(char retorno[]);
+
+/** \brief
+ *
+ * \param retorno[] char
+ * \return void
+ *
+ */
+void eGenerica_pedirClave(char retorno[]);
 
 /** \brief
  *

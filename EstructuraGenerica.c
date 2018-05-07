@@ -193,6 +193,26 @@ void eGenerica_pedirNombre(char retorno[])
 	pedirStringValido(retorno, GENERICA_MSJ_INGRESE_NOMBRE, GENERICA_MSJ_REINGRESE_NOMBRE, GENERICA_LARGO_NOMBRE);
 }
 
+void eGenerica_pedirClave(char retorno[])
+{
+	pedirStringValido(retorno, GENERICA_MSJ_INGRESE_CLAVE, GENERICA_MSJ_REINGRESE_CLAVE, GENERICA_LARGO_CLAVE);
+}
+
+int eGenerica_validarClave(eGenerica registro[], char claveIngresada[])
+{
+	int clavesCoinciden = 0;
+
+	if(strcmp(registro->clave, claveIngresada) != 0)
+	{
+		imprimirEnPantalla(GENERICA_MSJ_CLAVE_NO_COINCIDE);
+	}
+	else
+	{
+		clavesCoinciden = 1;
+	}
+	return clavesCoinciden;
+}
+
 eGenerica eGenerica_pedirIngreso(eGenerica listado[], int limite)
 {
 	eGenerica retorno;
