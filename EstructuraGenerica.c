@@ -245,12 +245,10 @@ void eGenerica_baja(eGenerica listado[], int limite)
 
 void eGenerica_modificarUno(eGenerica registro[])
 {
-	eMenu menuModificar = {
-							5, //cantidad de opciones
-							{1,2,3,4,0}, //codigos
-							{"1. Nombre","2. Legajo","3. Edad","4. Nota","0. Cancelar"}, //descripciones
-							{"Qu‚ desea modificar?"} //titulo del menu
-						   };
+	eMenu menuModificar = {/*cantidad de opciones*/GENERICA_MENU_MODIFICAR_UNO_CANT,
+							/*codigos*/{1,2,3,4,0},
+							/*descripciones*/{GENERICA_MENU_MODIFICAR_UNO_DETALLE1,GENERICA_MENU_MODIFICAR_UNO_DETALLE2,GENERICA_MENU_MODIFICAR_UNO_DETALLE3,GENERICA_MENU_MODIFICAR_UNO_DETALLE4,GENERICA_MENU_MODIFICAR_UNO_DETALLE5},
+							/*titulo del menu*/{GENERICA_MENU_MODIFICAR_UNO_TITULO}};
 	int opcion;
 
 	ejecutarEnConsola(LIMPIAR_PANTALLA);
@@ -433,3 +431,434 @@ void eGenerica_gestion(eGenerica listado[], int limite)
 	}
 	while(volverAlMain == 'N');
 }
+
+/************************************************************************************************************************/
+
+int eDepende_init(eDepende listado[], int limite)
+{
+	int retorno = -1;
+	int i;
+
+	retorno = 0;
+	for(i=0 ; i<limite ; i++)
+	{
+		listado[i].estado= LIBRE;
+		listado[i].idDepende= 0;
+	}
+	return retorno;
+}
+
+int eDepende_buscarLugarLibre(eDepende listado[], int limite)
+{
+	int retorno = -1;
+	int i;
+
+	for(i=0 ; i<limite ; i++)
+	{
+		if(listado[i].estado == LIBRE)
+		{
+			retorno = i;
+			break;
+		}
+	}
+	return retorno;
+}
+
+int eDepende_siguienteId(eDepende listado[], int limite)
+{
+	int retorno = 0;
+	int i;
+
+	for(i=0; i<limite; i++)
+	{
+		if(listado[i].estado == OCUPADO)
+		{
+			if(listado[i].idDepende > retorno)
+			{
+				 retorno = listado[i].idDepende;
+			}
+		}
+	}
+	return retorno+1;
+}
+
+int eDepende_buscarPorId(eDepende listado[], int limite, int id)
+{
+	int retorno = -1;
+	int i;
+
+	for(i=0 ; i<limite ; i++)
+	{
+		if(listado[i].estado == OCUPADO && listado[i].idDepende == id)
+		{
+			retorno = i;
+			break;
+		}
+	}
+	return retorno;
+}
+
+int eDepende_pedirIdYBuscar(eDepende listado[], int limite)
+{
+	int retorno;
+	int id;
+
+	do
+	{
+		eDepende_mostrarListado(listado, limite);
+		id = pedirIntValido(DEPENDE_MSJ_INGRESE_ID, DEPENDE_MSJ_REINGRESE_ID, DEPENDE_ID_MIN, DEPENDE_ID_MAX);
+		retorno = eDepende_buscarPorId(listado, limite, id);
+		if(retorno < 0)
+		{
+			imprimirEnPantalla(DEPENDE_MSJ_ID_NO_EXISTE);
+		}
+	}
+	while(retorno < 0);
+
+	return retorno;
+}
+
+int eDepende_estaVacio(eDepende listado[], int limite)
+{
+	int retorno = 1;
+	int i;
+
+	for(i=0 ; i<limite ; i++)
+	{
+		if(listado[i].estado == OCUPADO)
+		{
+			retorno = 0;
+			break;//con el primer ocupado ya se que no esta vacio
+		}
+	}
+	return retorno;
+}
+
+void eDepende_mostrarUno(eDepende parametro)
+{
+	 printf(DEPENDE_MASCARA_MOSTRAR_UNO, parametro.idDepende, parametro.nombre, parametro.estado);
+
+}
+
+void eDepende_mostrarListado(eDepende listado[], int limite)
+{
+	int i;
+	int contadorMostrados = 0;
+
+	if(eDepende_estaVacio(listado, limite) == 1)
+	{
+		imprimirEnPantalla(DEPENDE_MSJ_LISTA_VACIA);
+	}
+	else
+	{
+		printf(DEPENDE_CABECERA_LISTADO);
+		for(i=0; i<limite; i++)
+		{
+			if(listado[i].estado==OCUPADO)
+			{
+				eDepende_mostrarUno(listado[i]);
+				contadorMostrados++;
+
+				if(contadorMostrados%20 == 0)
+				{
+					//cada 20 registros hago una pausa
+					ejecutarEnConsola(HACER_PAUSA);
+					imprimirEnPantalla(DEPENDE_CABECERA_LISTADO);
+				}
+			}
+
+		}
+	}
+}
+
+void eDepende_listar(eDepende listado[], int limite)
+{
+	ejecutarEnConsola(LIMPIAR_PANTALLA);
+	imprimirTitulo(DEPENDE_TITULO_LISTA);
+
+	eDepende_mostrarListado(listado, limite);
+
+	ejecutarEnConsola(HACER_PAUSA);
+}
+
+void eDepende_pedirNombre(char retorno[])
+{
+	pedirStringValido(retorno, DEPENDE_MSJ_INGRESE_NOMBRE, DEPENDE_MSJ_REINGRESE_NOMBRE, DEPENDE_LARGO_NOMBRE);
+}
+
+eDepende eDepende_pedirIngreso(eDepende listado[], int limite)
+{
+	eDepende retorno;
+
+	retorno.idDepende = eDepende_siguienteId(listado, limite);
+
+	eDepende_pedirNombre((char *)&(retorno.nombre));
+
+	//retorno.demasCampos
+
+	retorno.estado = OCUPADO;
+
+	return retorno;
+}
+
+void eDepende_alta(eDepende listadoDepende[], int limiteDepende, eGenerica listadoGenerica[], int limiteGenerica)
+{
+	eDepende registro;
+	char confirmacion;
+	int posicion;
+
+	posicion = eDepende_buscarLugarLibre(listadoDepende, limiteDepende);
+	if(posicion < 0)
+	{
+		imprimirEnPantalla(DEPENDE_MSJ_NO_MAS_LUGAR);
+	}
+	else
+	{
+		ejecutarEnConsola(LIMPIAR_PANTALLA);
+		imprimirTitulo(DEPENDE_TITULO_ALTA);
+		registro = eDepende_pedirIngreso(listadoDepende, limiteDepende);
+		eDepende_mostrarUno(registro);
+
+		confirmacion = pedirConfirmacion(MSJ_CONFIRMA_CORRECTOS);
+
+		if(confirmacion == 'S')
+		{
+			listadoDepende[posicion] = registro;
+			eDepende_ordenar(listadoDepende, limiteDepende, DEPENDE_ORDEN);
+			imprimirEnPantalla(DEPENDE_MSJ_ALTA_OK);
+		}
+		else
+		{
+			imprimirEnPantalla(MSJ_CANCELO_GESTION);
+		}
+	}
+	ejecutarEnConsola(HACER_PAUSA);
+}
+
+void eDepende_baja(eDepende listadoDepende[], int limiteDepende, eGenerica listadoGenerica[], int limiteGenerica)
+{
+	char confirmacion;
+	int posicion;
+
+	ejecutarEnConsola(LIMPIAR_PANTALLA);
+	imprimirTitulo(DEPENDE_TITULO_BAJA);
+
+	if(eDepende_estaVacio(listadoDepende, limiteDepende) == 1)
+	{
+		imprimirEnPantalla(DEPENDE_MSJ_LISTA_VACIA);
+	}
+	else
+	{
+		posicion = eDepende_pedirIdYBuscar(listadoDepende, limiteDepende);
+
+		ejecutarEnConsola(LIMPIAR_PANTALLA);
+		imprimirTitulo(DEPENDE_TITULO_BAJA);
+
+		eDepende_mostrarUno(listadoDepende[posicion]);
+
+		confirmacion = pedirConfirmacion(DEPENDE_MSJ_CONFIRMAR_BAJA);
+
+		if(confirmacion == 'S')
+		{
+			listadoDepende[posicion].estado = LIBRE;
+			imprimirEnPantalla(DEPENDE_MSJ_BAJA_OK);
+		}
+		else
+		{
+			imprimirEnPantalla(MSJ_CANCELO_GESTION);
+		}
+	}
+
+	ejecutarEnConsola(HACER_PAUSA);
+}
+
+void eDepende_modificarUno(eDepende registro[])
+{
+	eMenu menuModificar = {/*cantidad de opciones*/DEPENDE_MENU_MODIFICAR_UNO_CANT,
+							/*codigos*/{1,2,3,4,0},
+							/*descripciones*/{DEPENDE_MENU_MODIFICAR_UNO_DETALLE1,DEPENDE_MENU_MODIFICAR_UNO_DETALLE2,DEPENDE_MENU_MODIFICAR_UNO_DETALLE3,DEPENDE_MENU_MODIFICAR_UNO_DETALLE4,DEPENDE_MENU_MODIFICAR_UNO_DETALLE5},
+							/*titulo del menu*/{DEPENDE_MENU_MODIFICAR_UNO_TITULO}};
+	int opcion;
+
+	ejecutarEnConsola(LIMPIAR_PANTALLA);
+	imprimirTitulo("MODIFICANDO REGISTRO");
+	imprimirEnPantalla("\nDatos a modificar:");
+	eDepende_mostrarUno(*registro);
+
+	opcion = pedirOpcion(menuModificar);
+	switch(opcion)
+	{
+		case 1:
+			eDepende_pedirNombre((char *)&registro->nombre);
+			break;
+		case 2:
+			eDepende_pedirNombre((char *)&registro->nombre);
+			break;
+		case 3:
+			//registro->idDepende;
+			break;
+		case 4:
+			//registro->campoN;
+			break;
+		case 0:
+			break;
+	}
+}
+
+void eDepende_modificacion(eDepende listado[], int limite)
+{
+	eDepende registro;
+	char confirmacion;
+	int posicion;
+
+	ejecutarEnConsola(LIMPIAR_PANTALLA);
+	imprimirTitulo(DEPENDE_TITULO_MODIFICACION);
+
+	if(eDepende_estaVacio(listado, limite) == 1)
+	{
+		imprimirEnPantalla(DEPENDE_MSJ_LISTA_VACIA);
+	}
+	else
+	{
+		posicion = eDepende_pedirIdYBuscar(listado, limite);
+		//traigo el registro del id elegido para no pisar directo sobre el listado
+		registro = listado[posicion];
+
+		eDepende_modificarUno(&registro);
+		eDepende_ordenar(listado, limite, DEPENDE_ORDEN);
+
+		/*if(aca se pregunta si hubo cambios que requieran reprocesar)
+		{
+			se recalcularian promedios por ej.
+		}*/
+
+		ejecutarEnConsola(LIMPIAR_PANTALLA);
+		imprimirTitulo(DEPENDE_TITULO_MODIFICACION);
+
+		imprimirEnPantalla(DEPENDE_MSJ_REGISTRO_ACTUAL);
+		eDepende_mostrarUno(listado[posicion]);
+
+		imprimirEnPantalla(DEPENDE_MSJ_REGISTRO_MODIFICADO);
+		eDepende_mostrarUno(registro);
+
+		confirmacion = pedirConfirmacion(MSJ_CONFIRMA_CORRECTOS);
+
+		if(confirmacion == 'S')
+		{
+			listado[posicion] = registro;
+
+			imprimirEnPantalla(DEPENDE_MSJ_MODIFICACION_OK);
+		}
+		else
+		{
+			imprimirEnPantalla(MSJ_CANCELO_GESTION);
+		}
+	}
+
+	ejecutarEnConsola(HACER_PAUSA);
+}
+
+void eDepende_ordenar(eDepende listado[], int limite, char orden[])
+{
+	int i;
+	int j;
+	eDepende aux;
+
+	if(strcmp(orden, "idAsc") == 0)
+	{
+		for(i=0 ; i<limite-1 ; i++)
+		{
+			for(j=i+1 ; j<limite ; j++)
+			{
+				if(listado[i].idDepende > listado[j].idDepende)
+				{
+					aux = listado[i];
+					listado[i] = listado[j];
+					listado[j] = aux;
+				}
+			}
+		}
+	}
+	else if(strcmp(orden, "idDesc") == 0)
+	{
+		for(i=0 ; i<limite-1 ; i++)
+		{
+			for(j=i+1 ; j<limite ; j++)
+			{
+				if(listado[i].idDepende < listado[j].idDepende)
+				{
+					aux = listado[i];
+					listado[i] = listado[j];
+					listado[j] = aux;
+				}
+			}
+		}
+	}
+	else if(strcmp(orden, "nombreAsc") == 0)
+	{
+		for(i=0 ; i<limite-1 ; i++)
+		{
+			for(j=i+1 ; j<limite ; j++)
+			{
+				if(strcmp(listado[i].nombre, listado[j].nombre) > 0)
+				{
+					aux = listado[i];
+					listado[i] = listado[j];
+					listado[j] = aux;
+				}
+			}
+		}
+	}
+	else if(strcmp(orden, "nombreDesc") == 0)
+	{
+		for(i=0 ; i<limite-1 ; i++)
+		{
+			for(j=i+1 ; j<limite ; j++)
+			{
+				if(strcmp(listado[i].nombre, listado[j].nombre) < 0)
+				{
+					aux = listado[i];
+					listado[i] = listado[j];
+					listado[j] = aux;
+				}
+			}
+		}
+	}
+}
+
+void eDepende_gestion(eDepende listadoDepende[], int limiteDepende, eGenerica listadoGenerica[], int limiteGenerica)
+{
+	eMenu menuEstructuraDepende = {/*cantidad de opciones*/5,
+									/*codigos*/{1,2,3,4,0},
+									/*descripciones*/{"1. Alta","2. Baja","3. Modificaci¢n","4. Listar","9. Volver al men£ principal"},
+									/*titulo del menu*/{DEPENDE_TITULO_GESTION}};
+	int opcion;
+	char volverAlMain = 'N';
+
+	do
+	{
+		ejecutarEnConsola(LIMPIAR_PANTALLA);
+		opcion = pedirOpcion(menuEstructuraDepende);
+		switch(opcion)
+		{
+			case 1:
+				eDepende_alta(listadoDepende, limiteDepende, listadoGenerica, limiteGenerica);
+				break;
+			case 2:
+				eDepende_baja(listadoDepende, limiteDepende, listadoGenerica, limiteGenerica);
+				break;
+			case 3:
+				eDepende_modificacion(listadoDepende, limiteDepende);
+				break;
+			case 4:
+				eDepende_listar(listadoDepende, limiteDepende);
+				break;
+			case 0:
+				volverAlMain = 'S';
+				break;
+		}
+	}
+	while(volverAlMain == 'N');
+}
+
+/************************************************************************************************************************/

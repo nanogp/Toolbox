@@ -19,12 +19,12 @@ int main()
     //ARRAYS DE ESTRUCTURAS
     eGenerica listadoGenerica[GENERICA_CANT_MAX] = {};
     eDepende listadoDepende[DEPENDE_CANT_MAX] = {};
-    eEstadisticas listadoEstadisticas[ESTADISTICAS_CANT_MAX] = {};
+    //eEstadisticas listadoEstadisticas[ESTADISTICAS_CANT_MAX] = {};
 
     //INCIALIZAR
     eGenerica_init(listadoGenerica, GENERICA_CANT_MAX);
     eDepende_init(listadoDepende, DEPENDE_CANT_MAX);
-    eEstadisticas_init(listadoEstadisticas, DEPENDE_CANT_MAX);
+    //eEstadisticas_init(listadoEstadisticas, ESTADISTICAS_CANT_MAX);
 
     do
     {
@@ -36,10 +36,10 @@ int main()
                 eGenerica_gestion(listadoGenerica, GENERICA_CANT_MAX);
                 break;
             case 2:
-                eDepende_gestion(listadoDepende, DEPENDE_CANT_MAX);
+                eDepende_gestion(listadoDepende, DEPENDE_CANT_MAX, listadoGenerica, GENERICA_CANT_MAX);
                 break;
             case 3:
-                eEstadisticas_gestion(listadoEstadisticas, ESTADISTICAS_CANT_MAX);
+                //eEstadisticas_gestion(listadoEstadisticas, ESTADISTICAS_CANT_MAX);
                 break;
             case 0:
                 salirDelPrograma = pedirConfirmacion("Confirma que desea salir del programa?");
