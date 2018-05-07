@@ -9,20 +9,22 @@
 
 int main()
 {
-    eMenu menuPrincipal = {
-                            5, //limiteidad de opciones
-                            {1,2,3,4,0}, //codigos
-                            {"1. Alta Generica","2. Baja Generica","3. Modificaci¢n Generica","4. Lista Generica","0. Salir"}, //descripciones
-                            {"MENU GENERICO"} //titulo del menu
-                            };
+    eMenu menuPrincipal = {/*cantidad de opciones*/4,
+                            /*codigos*/{1,2,3,0},
+                            /*descripciones*/{"1. Gestionar Generica","2. Gestionar Depende","3. Gestionar Estadisticas","0. Salir"},
+                            /*titulo del menu*/{"MENU GENERICO"}};
     int opcion;
     char salirDelPrograma = 'N';
 
     //ARRAYS DE ESTRUCTURAS
     eGenerica listadoGenerica[GENERICA_CANT_MAX] = {};
+    eDepende listadoDepende[DEPENDE_CANT_MAX] = {};
+    eEstadisticas listadoEstadisticas[ESTADISTICAS_CANT_MAX] = {};
 
     //INCIALIZAR
     eGenerica_init(listadoGenerica, GENERICA_CANT_MAX);
+    eDepende_init(listadoDepende, DEPENDE_CANT_MAX);
+    eEstadisticas_init(listadoEstadisticas, DEPENDE_CANT_MAX);
 
     do
     {
@@ -31,16 +33,13 @@ int main()
         switch(opcion)
         {
             case 1:
-                eGenerica_alta(listadoGenerica, GENERICA_CANT_MAX);
+                eGenerica_gestion(listadoGenerica, GENERICA_CANT_MAX);
                 break;
             case 2:
-                eGenerica_baja(listadoGenerica, GENERICA_CANT_MAX);
+                eDepende_gestion(listadoDepende, DEPENDE_CANT_MAX);
                 break;
             case 3:
-                eGenerica_modificacion(listadoGenerica, GENERICA_CANT_MAX);
-                break;
-            case 4:
-                eGenerica_listar(listadoGenerica, GENERICA_CANT_MAX);
+                eEstadisticas_gestion(listadoEstadisticas, ESTADISTICAS_CANT_MAX);
                 break;
             case 0:
                 salirDelPrograma = pedirConfirmacion("Confirma que desea salir del programa?");

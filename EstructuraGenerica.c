@@ -69,6 +69,26 @@ int eGenerica_buscarPorId(eGenerica listado[], int limite, int id)
 	return retorno;
 }
 
+int eGenerica_pedirIdYBuscar(eGenerica listado[], int limite)
+{
+	int retorno;
+	int id;
+
+	do
+	{
+		eGenerica_mostrarListado(listado, limite);
+		id = pedirIntValido(GENERICA_MSJ_INGRESE_ID, GENERICA_MSJ_REINGRESE_ID, GENERICA_ID_MIN, GENERICA_ID_MAX);
+		retorno = eGenerica_buscarPorId(listado, limite, id);
+		if(retorno < 0)
+		{
+			imprimirEnPantalla(GENERICA_MSJ_ID_NO_EXISTE);
+		}
+	}
+	while(retorno < 0);
+
+	return retorno;
+}
+
 int eGenerica_estaVacio(eGenerica listado[], int limite)
 {
 	int retorno = 1;
@@ -258,26 +278,6 @@ void eGenerica_modificarUno(eGenerica registro[])
 	}
 }
 
-int eGenerica_pedirIdYBuscar(eGenerica listado[], int limite)
-{
-	int retorno;
-	int id;
-
-	do
-	{
-		eGenerica_mostrarListado(listado, limite);
-		id = pedirIntValido(GENERICA_MSJ_INGRESE_ID, GENERICA_MSJ_REINGRESE_ID, GENERICA_ID_MIN, GENERICA_ID_MAX);
-		retorno = eGenerica_buscarPorId(listado, limite, id);
-		if(retorno < 0)
-		{
-			imprimirEnPantalla(GENERICA_MSJ_ID_NO_EXISTE);
-		}
-	}
-	while(retorno < 0);
-
-	return retorno;
-}
-
 void eGenerica_modificacion(eGenerica listado[], int limite)
 {
 	eGenerica registro;
@@ -401,12 +401,10 @@ void eGenerica_ordenar(eGenerica listado[], int limite, char orden[])
 
 void eGenerica_gestion(eGenerica listado[], int limite)
 {
-	eMenu menuEstructuraGenerica = {
-							4, //limiteidad de opciones
-							{1,2,3,9}, //codigos
-							{"1. Alta","2. Baja","3. Modificaci¢n","9. Volver al men£ principal"}, //descripciones
-							{GENERICA_TITULO_GESTION} //titulo del menu
-							};
+	eMenu menuEstructuraGenerica = {/*cantidad de opciones*/5,
+									/*codigos*/{1,2,3,4,0},
+									/*descripciones*/{"1. Alta","2. Baja","3. Modificaci¢n","4. Listar","9. Volver al men£ principal"},
+									/*titulo del menu*/{GENERICA_TITULO_GESTION}};
 	int opcion;
 	char volverAlMain = 'N';
 
@@ -426,9 +424,9 @@ void eGenerica_gestion(eGenerica listado[], int limite)
 				eGenerica_modificacion(listado, limite);
 				break;
 			case 4:
-				imprimirEnPantalla(menuEstructuraGenerica.descripciones[opcion-1]);ejecutarEnConsola(HACER_PAUSA);
+				eGenerica_listar(listado, limite);
 				break;
-			case 9:
+			case 0:
 				volverAlMain = 'S';
 				break;
 		}
