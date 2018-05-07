@@ -3,16 +3,20 @@
 #include "General.h"
 #include "Menu.h"
 #include "EstructuraGenerica.h"
-//#include "ESTRUCTURA_1.h"
-//#include "ESTRUCTURA_2.h"
 
+#define MAIN_MENU_GESTION_TITULO DEFINIR_MACRO_STRING(MENU GENERICO)
+#define MAIN_MENU_GESTION_CANT 4
+#define MAIN_MENU_GESTION_DETALLE1 DEFINIR_MACRO_STRING(1. Gestionar Generica)
+#define MAIN_MENU_GESTION_DETALLE2 DEFINIR_MACRO_STRING(2. Gestionar Depende)
+#define MAIN_MENU_GESTION_DETALLE3 DEFINIR_MACRO_STRING(3. Gestionar Estadisticas)
+#define MAIN_MENU_GESTION_DETALLE4 DEFINIR_MACRO_STRING(0. Volver al menu principal)
 
 int main()
 {
-    eMenu menuPrincipal = {/*cantidad de opciones*/4,
+    eMenu menuPrincipal = {/*cantidad de opciones*/MAIN_MENU_GESTION_CANT,
                             /*codigos*/{1,2,3,0},
-                            /*descripciones*/{"1. Gestionar Generica","2. Gestionar Depende","3. Gestionar Estadisticas","0. Salir"},
-                            /*titulo del menu*/{"MENU GENERICO"}};
+                            /*descripciones*/{MAIN_MENU_GESTION_DETALLE1,MAIN_MENU_GESTION_DETALLE2,MAIN_MENU_GESTION_DETALLE3,MAIN_MENU_GESTION_DETALLE4},
+                            /*titulo del menu*/{MAIN_MENU_GESTION_TITULO}};
     int opcion;
     char salirDelPrograma = 'N';
 

@@ -89,6 +89,42 @@ int eGenerica_pedirIdYBuscar(eGenerica listado[], int limite)
 	return retorno;
 }
 
+int eGenerica_buscarPorNombre(eGenerica listado[], int limite, char nombre[])
+{
+	int retorno = -1;
+	int i;
+
+	for(i=0 ; i<limite ; i++)
+	{
+		if(listado[i].estado == OCUPADO && strcmpi(listado[i].nombre, nombre) == 0)
+		{
+			retorno = i;
+			break;
+		}
+	}
+	return retorno;
+}
+
+int eGenerica_pedirNombreYBuscar(eGenerica listado[], int limite)
+{
+	int retorno;
+	char nombre[GENERICA_LARGO_NOMBRE];
+
+	do
+	{
+		eGenerica_mostrarListado(listado, limite);
+		eGenerica_pedirNombre(nombre);
+		retorno = eGenerica_buscarPorNombre(listado, limite, nombre);
+		if(retorno < 0)
+		{
+			imprimirEnPantalla(GENERICA_MSJ_NOMBRE_NO_EXISTE);
+		}
+	}
+	while(retorno < 0);
+
+	return retorno;
+}
+
 int eGenerica_estaVacio(eGenerica listado[], int limite)
 {
 	int retorno = 1;
@@ -371,7 +407,7 @@ void eGenerica_ordenar(eGenerica listado[], int limite, char orden[])
 		{
 			for(j=i+1 ; j<limite ; j++)
 			{
-				if(strcmp(listado[i].nombre, listado[j].nombre) > 0)
+				if(strcmpi(listado[i].nombre, listado[j].nombre) > 0)
 				{
 					aux = listado[i];
 					listado[i] = listado[j];
@@ -386,7 +422,7 @@ void eGenerica_ordenar(eGenerica listado[], int limite, char orden[])
 		{
 			for(j=i+1 ; j<limite ; j++)
 			{
-				if(strcmp(listado[i].nombre, listado[j].nombre) < 0)
+				if(strcmpi(listado[i].nombre, listado[j].nombre) < 0)
 				{
 					aux = listado[i];
 					listado[i] = listado[j];
@@ -399,17 +435,17 @@ void eGenerica_ordenar(eGenerica listado[], int limite, char orden[])
 
 void eGenerica_gestion(eGenerica listado[], int limite)
 {
-	eMenu menuEstructuraGenerica = {/*cantidad de opciones*/5,
-									/*codigos*/{1,2,3,4,0},
-									/*descripciones*/{"1. Alta","2. Baja","3. Modificaci¢n","4. Listar","9. Volver al men£ principal"},
-									/*titulo del menu*/{GENERICA_TITULO_GESTION}};
+	eMenu menuGestion = {/*cantidad de opciones*/GENERICA_MENU_GESTION_CANT,
+						/*codigos*/{1,2,3,4,0},
+						/*descripciones*/{GENERICA_MENU_GESTION_DETALLE1,GENERICA_MENU_GESTION_DETALLE2,GENERICA_MENU_GESTION_DETALLE3,GENERICA_MENU_GESTION_DETALLE4,GENERICA_MENU_GESTION_DETALLE5},
+						/*titulo del menu*/{GENERICA_MENU_GESTION_TITULO}};
 	int opcion;
 	char volverAlMain = 'N';
 
 	do
 	{
 		ejecutarEnConsola(LIMPIAR_PANTALLA);
-		opcion = pedirOpcion(menuEstructuraGenerica);
+		opcion = pedirOpcion(menuGestion);
 		switch(opcion)
 		{
 			case 1:
@@ -800,7 +836,7 @@ void eDepende_ordenar(eDepende listado[], int limite, char orden[])
 		{
 			for(j=i+1 ; j<limite ; j++)
 			{
-				if(strcmp(listado[i].nombre, listado[j].nombre) > 0)
+				if(strcmpi(listado[i].nombre, listado[j].nombre) > 0)
 				{
 					aux = listado[i];
 					listado[i] = listado[j];
@@ -815,7 +851,7 @@ void eDepende_ordenar(eDepende listado[], int limite, char orden[])
 		{
 			for(j=i+1 ; j<limite ; j++)
 			{
-				if(strcmp(listado[i].nombre, listado[j].nombre) < 0)
+				if(strcmpi(listado[i].nombre, listado[j].nombre) < 0)
 				{
 					aux = listado[i];
 					listado[i] = listado[j];
@@ -828,17 +864,17 @@ void eDepende_ordenar(eDepende listado[], int limite, char orden[])
 
 void eDepende_gestion(eDepende listadoDepende[], int limiteDepende, eGenerica listadoGenerica[], int limiteGenerica)
 {
-	eMenu menuEstructuraDepende = {/*cantidad de opciones*/5,
-									/*codigos*/{1,2,3,4,0},
-									/*descripciones*/{"1. Alta","2. Baja","3. Modificaci¢n","4. Listar","9. Volver al men£ principal"},
-									/*titulo del menu*/{DEPENDE_TITULO_GESTION}};
+	eMenu menuGestion = {/*cantidad de opciones*/DEPENDE_MENU_GESTION_CANT,
+						/*codigos*/{1,2,3,4,0},
+						/*descripciones*/{DEPENDE_MENU_GESTION_DETALLE1,DEPENDE_MENU_GESTION_DETALLE2,DEPENDE_MENU_GESTION_DETALLE3,DEPENDE_MENU_GESTION_DETALLE4,DEPENDE_MENU_GESTION_DETALLE5},
+						/*titulo del menu*/{DEPENDE_MENU_GESTION_TITULO}};
 	int opcion;
 	char volverAlMain = 'N';
 
 	do
 	{
 		ejecutarEnConsola(LIMPIAR_PANTALLA);
-		opcion = pedirOpcion(menuEstructuraDepende);
+		opcion = pedirOpcion(menuGestion);
 		switch(opcion)
 		{
 			case 1:

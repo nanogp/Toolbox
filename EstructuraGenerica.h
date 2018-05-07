@@ -4,10 +4,11 @@
 #define LIBRE 0
 
 #define MSJ_CONFIRMA_CORRECTOS DEFINIR_MACRO_STRING(Confirma que los datos ingresados son correctos?)
-#define MSJ_CANCELO_GESTION DEFINIR_MACRO_STRING(\nSe cancelà la gestiàn)
+#define MSJ_CANCELO_GESTION DEFINIR_MACRO_STRING(\nSe cancelo la gestion)
 
 #define GENERICA_CANT_MAX 10
 #define GENERICA_LARGO_NOMBRE 50
+#define GENERICA_LARGO_CLAVE 50
 #define GENERICA_ID_MIN 1
 #define GENERICA_ID_MAX 1000000
 #define GENERICA_ORDEN DEFINIR_MACRO_STRING(nombreAsc)
@@ -19,26 +20,34 @@
 #define GENERICA_MASCARA_MOSTRAR_UNO DEFINIR_MACRO_STRING(\n %d - %s - %d)
 #define GENERICA_CABECERA_LISTADO DEFINIR_MACRO_STRING(\n ID  - nombre - edad)
 #define GENERICA_MSJ_LISTA_VACIA DEFINIR_MACRO_STRING(\n\nLa lista esta vacia o todos los registros se dieron de baja)
-#define GENERICA_MSJ_NO_MAS_LUGAR DEFINIR_MACRO_STRING(\nNo hay m s lugares disponibles para altas de Generica)
+#define GENERICA_MSJ_NO_MAS_LUGAR DEFINIR_MACRO_STRING(\nNo hay mas lugares disponibles para altas de Generica)
 #define GENERICA_MSJ_INGRESE_ID DEFINIR_MACRO_STRING(\n\nIngrese el ID de Generica: \0)
-#define GENERICA_MSJ_REINGRESE_ID DEFINIR_MACRO_STRING(\nEl ID debe ser un n¡mero mayor que cero. Reingrese un ID v lido: \0)
+#define GENERICA_MSJ_REINGRESE_ID DEFINIR_MACRO_STRING(\nEl ID debe ser un n¡mero mayor que cero. Reingrese un ID valido: \0)
 #define GENERICA_MSJ_ID_NO_EXISTE DEFINIR_MACRO_STRING(\nEl ID de Generica ingresado no existe)
+#define GENERICA_MSJ_NOMBRE_NO_EXISTE DEFINIR_MACRO_STRING(\nEl nombre ingresado no existe)
 #define GENERICA_MSJ_INGRESE_NOMBRE DEFINIR_MACRO_STRING(\nIngrese nombre: \0)
 #define GENERICA_MSJ_REINGRESE_NOMBRE DEFINIR_MACRO_STRING(\nNombre muy largo. Reingrese por favor: \0)
-#define GENERICA_MSJ_REINTENTAR_GESTION DEFINIR_MACRO_STRING(Desea reintentar la gesti¢n?)
+#define GENERICA_MSJ_REINTENTAR_GESTION DEFINIR_MACRO_STRING(Desea reintentar la gestion?)
 #define GENERICA_MSJ_ALTA_OK DEFINIR_MACRO_STRING(\nEl Generica se dio de alta)
 #define GENERICA_MSJ_CONFIRMAR_BAJA DEFINIR_MACRO_STRING(Confirma que desea dar de baja dicho Generica?)
 #define GENERICA_MSJ_BAJA_OK DEFINIR_MACRO_STRING(\nEl Generica se dio de baja)
 #define GENERICA_MSJ_REGISTRO_ACTUAL DEFINIR_MACRO_STRING(\nGenerica actual: \0)
 #define GENERICA_MSJ_REGISTRO_MODIFICADO DEFINIR_MACRO_STRING(\nGenerica modificado: \0)
 #define GENERICA_MSJ_MODIFICACION_OK DEFINIR_MACRO_STRING(\nEl Generica se modifico)
-#define GENERICA_MENU_MODIFICAR_UNO_TITULO DEFINIR_MACRO_STRING(Qu‚ desea modificar?)
+#define GENERICA_MENU_MODIFICAR_UNO_TITULO DEFINIR_MACRO_STRING(Que desea modificar?)
 #define GENERICA_MENU_MODIFICAR_UNO_CANT 5
 #define GENERICA_MENU_MODIFICAR_UNO_DETALLE1 DEFINIR_MACRO_STRING(1. Nombre)
 #define GENERICA_MENU_MODIFICAR_UNO_DETALLE2 DEFINIR_MACRO_STRING(2. Legajo)
 #define GENERICA_MENU_MODIFICAR_UNO_DETALLE3 DEFINIR_MACRO_STRING(3. Edad)
 #define GENERICA_MENU_MODIFICAR_UNO_DETALLE4 DEFINIR_MACRO_STRING(4. Nota)
 #define GENERICA_MENU_MODIFICAR_UNO_DETALLE5 DEFINIR_MACRO_STRING(0. Cancelar)
+#define GENERICA_MENU_GESTION_TITULO DEFINIR_MACRO_STRING(GESTION DE GENERICA)
+#define GENERICA_MENU_GESTION_CANT 5
+#define GENERICA_MENU_GESTION_DETALLE1 DEFINIR_MACRO_STRING(1. Alta)
+#define GENERICA_MENU_GESTION_DETALLE2 DEFINIR_MACRO_STRING(2. Baja)
+#define GENERICA_MENU_GESTION_DETALLE3 DEFINIR_MACRO_STRING(3. Modificacion)
+#define GENERICA_MENU_GESTION_DETALLE4 DEFINIR_MACRO_STRING(4. Listar)
+#define GENERICA_MENU_GESTION_DETALLE5 DEFINIR_MACRO_STRING(0. Volver al menu principal)
 
 #define DEPENDE_CANT_MAX 10
 #define DEPENDE_LARGO_NOMBRE 50
@@ -53,26 +62,34 @@
 #define DEPENDE_MASCARA_MOSTRAR_UNO DEFINIR_MACRO_STRING(\n %d - %s - %d)
 #define DEPENDE_CABECERA_LISTADO DEFINIR_MACRO_STRING(\n ID  - nombre - edad)
 #define DEPENDE_MSJ_LISTA_VACIA DEFINIR_MACRO_STRING(\n\nLa lista esta vacia o todos los registros se dieron de baja)
-#define DEPENDE_MSJ_NO_MAS_LUGAR DEFINIR_MACRO_STRING(\nNo hay m s lugares disponibles para altas de Depende)
+#define DEPENDE_MSJ_NO_MAS_LUGAR DEFINIR_MACRO_STRING(\nNo hay mas lugares disponibles para altas de Depende)
 #define DEPENDE_MSJ_INGRESE_ID DEFINIR_MACRO_STRING(\n\nIngrese el ID de Depende: \0)
-#define DEPENDE_MSJ_REINGRESE_ID DEFINIR_MACRO_STRING(\nEl ID debe ser un n¡mero mayor que cero. Reingrese un ID v lido: \0)
+#define DEPENDE_MSJ_REINGRESE_ID DEFINIR_MACRO_STRING(\nEl ID debe ser un n¡mero mayor que cero. Reingrese un ID valido: \0)
 #define DEPENDE_MSJ_ID_NO_EXISTE DEFINIR_MACRO_STRING(\nEl ID de Depende ingresado no existe)
+#define DEPENDE_MSJ_NOMBRE_NO_EXISTE DEFINIR_MACRO_STRING(\nEl nombre ingresado no existe)
 #define DEPENDE_MSJ_INGRESE_NOMBRE DEFINIR_MACRO_STRING(\nIngrese nombre: \0)
 #define DEPENDE_MSJ_REINGRESE_NOMBRE DEFINIR_MACRO_STRING(\nNombre muy largo. Reingrese por favor: \0)
-#define DEPENDE_MSJ_REINTENTAR_GESTION DEFINIR_MACRO_STRING(Desea reintentar la gesti¢n?)
+#define DEPENDE_MSJ_REINTENTAR_GESTION DEFINIR_MACRO_STRING(Desea reintentar la gestion?)
 #define DEPENDE_MSJ_ALTA_OK DEFINIR_MACRO_STRING(\nEl Depende se dio de alta)
 #define DEPENDE_MSJ_CONFIRMAR_BAJA DEFINIR_MACRO_STRING(Confirma que desea dar de baja dicho Depende?)
 #define DEPENDE_MSJ_BAJA_OK DEFINIR_MACRO_STRING(\nEl Depende se dio de baja)
 #define DEPENDE_MSJ_REGISTRO_ACTUAL DEFINIR_MACRO_STRING(\nDepende actual: \0)
 #define DEPENDE_MSJ_REGISTRO_MODIFICADO DEFINIR_MACRO_STRING(\nDepende modificado: \0)
 #define DEPENDE_MSJ_MODIFICACION_OK DEFINIR_MACRO_STRING(\nEl Depende se modifico)
-#define DEPENDE_MENU_MODIFICAR_UNO_TITULO DEFINIR_MACRO_STRING(Qu‚ desea modificar?)
+#define DEPENDE_MENU_MODIFICAR_UNO_TITULO DEFINIR_MACRO_STRING(Que desea modificar?)
 #define DEPENDE_MENU_MODIFICAR_UNO_CANT 5
 #define DEPENDE_MENU_MODIFICAR_UNO_DETALLE1 DEFINIR_MACRO_STRING(1. Nombre)
 #define DEPENDE_MENU_MODIFICAR_UNO_DETALLE2 DEFINIR_MACRO_STRING(2. Legajo)
 #define DEPENDE_MENU_MODIFICAR_UNO_DETALLE3 DEFINIR_MACRO_STRING(3. Edad)
 #define DEPENDE_MENU_MODIFICAR_UNO_DETALLE4 DEFINIR_MACRO_STRING(4. Nota)
 #define DEPENDE_MENU_MODIFICAR_UNO_DETALLE5 DEFINIR_MACRO_STRING(0. Cancelar)
+#define DEPENDE_MENU_GESTION_TITULO DEFINIR_MACRO_STRING(GESTION DE DEPENDE)
+#define DEPENDE_MENU_GESTION_CANT 5
+#define DEPENDE_MENU_GESTION_DETALLE1 DEFINIR_MACRO_STRING(1. Alta)
+#define DEPENDE_MENU_GESTION_DETALLE2 DEFINIR_MACRO_STRING(2. Baja)
+#define DEPENDE_MENU_GESTION_DETALLE3 DEFINIR_MACRO_STRING(3. Modificacion)
+#define DEPENDE_MENU_GESTION_DETALLE4 DEFINIR_MACRO_STRING(4. Listar)
+#define DEPENDE_MENU_GESTION_DETALLE5 DEFINIR_MACRO_STRING(0. Volver al menu principal)
 
 #define ESTADISTICAS_CANT_MAX (GENERICA_CANT_MAX * DEPENDE_CANT_MAX)
 #define ESTADISTICAS_LARGO_NOMBRE 50
@@ -87,30 +104,39 @@
 #define ESTADISTICAS_MASCARA_MOSTRAR_UNO DEFINIR_MACRO_STRING(\n %d - %s - %d)
 #define ESTADISTICAS_CABECERA_LISTADO DEFINIR_MACRO_STRING(\n ID  - nombre - edad)
 #define ESTADISTICAS_MSJ_LISTA_VACIA DEFINIR_MACRO_STRING(\n\nLa lista esta vacia o todos los registros se dieron de baja)
-#define ESTADISTICAS_MSJ_NO_MAS_LUGAR DEFINIR_MACRO_STRING(\nNo hay m s lugares disponibles para altas de Estadisticas)
+#define ESTADISTICAS_MSJ_NO_MAS_LUGAR DEFINIR_MACRO_STRING(\nNo hay mas lugares disponibles para altas de Estadisticas)
 #define ESTADISTICAS_MSJ_INGRESE_ID DEFINIR_MACRO_STRING(\n\nIngrese el ID de Estadisticas: \0)
-#define ESTADISTICAS_MSJ_REINGRESE_ID DEFINIR_MACRO_STRING(\nEl ID debe ser un n¡mero mayor que cero. Reingrese un ID v lido: \0)
+#define ESTADISTICAS_MSJ_REINGRESE_ID DEFINIR_MACRO_STRING(\nEl ID debe ser un n¡mero mayor que cero. Reingrese un ID valido: \0)
 #define ESTADISTICAS_MSJ_ID_NO_EXISTE DEFINIR_MACRO_STRING(\nEl ID de Estadisticas ingresado no existe)
+#define ESTADISTICAS_MSJ_NOMBRE_NO_EXISTE DEFINIR_MACRO_STRING(\nEl nombre ingresado no existe)
 #define ESTADISTICAS_MSJ_INGRESE_NOMBRE DEFINIR_MACRO_STRING(\nIngrese nombre: \0)
 #define ESTADISTICAS_MSJ_REINGRESE_NOMBRE DEFINIR_MACRO_STRING(\nNombre muy largo. Reingrese por favor: \0)
-#define ESTADISTICAS_MSJ_REINTENTAR_GESTION DEFINIR_MACRO_STRING(Desea reintentar la gesti¢n?)
+#define ESTADISTICAS_MSJ_REINTENTAR_GESTION DEFINIR_MACRO_STRING(Desea reintentar la gestion?)
 #define ESTADISTICAS_MSJ_ALTA_OK DEFINIR_MACRO_STRING(\nEl Estadisticas se dio de alta)
 #define ESTADISTICAS_MSJ_CONFIRMAR_BAJA DEFINIR_MACRO_STRING(Confirma que desea dar de baja dicho Estadisticas?)
 #define ESTADISTICAS_MSJ_BAJA_OK DEFINIR_MACRO_STRING(\nEl Estadisticas se dio de baja)
 #define ESTADISTICAS_MSJ_REGISTRO_ACTUAL DEFINIR_MACRO_STRING(\nEstadisticas actual: \0)
 #define ESTADISTICAS_MSJ_REGISTRO_MODIFICADO DEFINIR_MACRO_STRING(\nEstadisticas modificado: \0)
 #define ESTADISTICAS_MSJ_MODIFICACION_OK DEFINIR_MACRO_STRING(\nEl Estadisticas se modifico)
-#define ESTADISTICAS_MENU_MODIFICAR_UNO_TITULO DEFINIR_MACRO_STRING(Qu‚ desea modificar?)
+#define ESTADISTICAS_MENU_MODIFICAR_UNO_TITULO DEFINIR_MACRO_STRING(Que desea modificar?)
 #define ESTADISTICAS_MENU_MODIFICAR_UNO_CANT 5
 #define ESTADISTICAS_MENU_MODIFICAR_UNO_DETALLE1 DEFINIR_MACRO_STRING(1. Nombre)
 #define ESTADISTICAS_MENU_MODIFICAR_UNO_DETALLE2 DEFINIR_MACRO_STRING(2. Legajo)
 #define ESTADISTICAS_MENU_MODIFICAR_UNO_DETALLE3 DEFINIR_MACRO_STRING(3. Edad)
 #define ESTADISTICAS_MENU_MODIFICAR_UNO_DETALLE4 DEFINIR_MACRO_STRING(4. Nota)
 #define ESTADISTICAS_MENU_MODIFICAR_UNO_DETALLE5 DEFINIR_MACRO_STRING(0. Cancelar)
+#define ESTADISTICAS_MENU_GESTION_TITULO DEFINIR_MACRO_STRING(GESTION DE ESTADISTICAS)
+#define ESTADISTICAS_MENU_GESTION_CANT 5
+#define ESTADISTICAS_MENU_GESTION_DETALLE1 DEFINIR_MACRO_STRING(1. Alta)
+#define ESTADISTICAS_MENU_GESTION_DETALLE2 DEFINIR_MACRO_STRING(2. Baja)
+#define ESTADISTICAS_MENU_GESTION_DETALLE3 DEFINIR_MACRO_STRING(3. Modificacion)
+#define ESTADISTICAS_MENU_GESTION_DETALLE4 DEFINIR_MACRO_STRING(4. Listar)
+#define ESTADISTICAS_MENU_GESTION_DETALLE5 DEFINIR_MACRO_STRING(0. Volver al menu principal)
 
 typedef struct
 {
-    char nombre[DEPENDE_LARGO_NOMBRE];
+    char nombre[GENERICA_LARGO_NOMBRE];
+    char clave[GENERICA_LARGO_CLAVE];
     //------------
     int idGenerica;
     int estado;
@@ -127,7 +153,7 @@ typedef struct
 
 typedef struct
 {
-    char nombre[DEPENDE_LARGO_NOMBRE];
+    char nombre[ESTADISTICAS_LARGO_NOMBRE];
     //------------
 	int idEstadisticas;
     int idDepende;
@@ -148,6 +174,15 @@ int eGenerica_init(eGenerica listado[], int limite);
  *
  * \param listado[] eGenerica
  * \param limite int
+ * \return int
+ *
+ */
+int eGenerica_siguienteId(eGenerica listado[], int limite);
+
+/** \brief
+ *
+ * \param listado[] eGenerica
+ * \param limite int
  * \param id int
  * \return int
  *
@@ -161,7 +196,17 @@ int eGenerica_buscarPorId(eGenerica listado[], int limite, int id);
  * \return int
  *
  */
-int eGenerica_siguienteId(eGenerica listado[], int limite);
+int eGenerica_pedirIdYBuscar(eGenerica listado[], int limite);
+
+/** \brief
+ *
+ * \param listado[] eGenerica
+ * \param limite int
+ * \param nombre[] char
+ * \return int
+ *
+ */
+int eGenerica_buscarPorNombre(eGenerica listado[], int limite, char nombre[]);
 
 /** \brief
  *
@@ -170,7 +215,7 @@ int eGenerica_siguienteId(eGenerica listado[], int limite);
  * \return int
  *
  */
-int eGenerica_pedirIdYBuscar(eGenerica listado[], int limite);
+int eGenerica_pedirNombreYBuscar(eGenerica listado[], int limite);
 
 /** \brief
  *
@@ -340,6 +385,25 @@ int eDepende_pedirIdYBuscar(eDepende listado[], int limite);
  *
  * \param listado[] eDepende
  * \param limite int
+ * \param nombre[] char
+ * \return int
+ *
+ */
+int eDepende_buscarPorNombre(eDepende listado[], int limite, char nombre[]);
+
+/** \brief
+ *
+ * \param listado[] eDepende
+ * \param limite int
+ * \return int
+ *
+ */
+int eDepende_pedirNombreYBuscar(eDepende listado[], int limite);
+
+/** \brief
+ *
+ * \param listado[] eDepende
+ * \param limite int
  * \return int
  *
  */
@@ -503,6 +567,27 @@ int eEstadisticas_siguienteId(eEstadisticas listado[], int limite);
  *
  */
 int eEstadisticas_pedirIdYBuscar(eEstadisticas listado[], int limite);
+
+/** \brief
+ *
+ * \param listado[] eEstadisticas
+ * \param limite int
+ * \param nombre[] char
+ * \return int
+ *
+ */
+int eEstadisticas_buscarPorNombre(eEstadisticas listado[], int limite, char nombre[]);
+
+/** \brief
+ *
+ * \param listado[] eEstadisticas
+ * \param limite int
+ * \return int
+ *
+ */
+int eEstadisticas_pedirNombreYBuscar(eEstadisticas listado[], int limite);
+
+
 
 /** \brief
  *
