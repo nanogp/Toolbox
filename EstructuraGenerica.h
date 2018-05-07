@@ -343,7 +343,7 @@ void eGenerica_ordenar(eGenerica listado[], int limite, char orden[]);
  */
 void eGenerica_gestion(eGenerica listado[], int limite);
 
-/* FUNCIONES PARA ESTRUCTURAS QUE DEPENDEN DE LA PRINCIPAL */
+/************************************ FUNCIONES PARA ESTRUCTURAS QUE DEPENDEN DE LA PRINCIPAL ************************************/
 
 /** \brief
  *
@@ -358,11 +358,29 @@ int eDepende_init(eDepende listado[], int limite);
  *
  * \param listado[] eDepende
  * \param limite int
+ * \return int
+ *
+ */
+int eDepende_siguienteId(eDepende listado[], int limite);
+
+/** \brief
+ *
+ * \param listado[] eDepende
+ * \param limite int
  * \param id int
  * \return int
  *
  */
 int eDepende_buscarPorId(eDepende listado[], int limite, int id);
+
+/** \brief
+ *
+ * \param listado[] eDepende
+ * \param limite int
+ * \return int
+ *
+ */
+int eDepende_pedirIdYBuscar(eDepende listado[], int limite);
 
 /** \brief
  *
@@ -381,16 +399,7 @@ int eDepende_buscarPorIdGenerica(eDepende listado[], int limite, int IdGenerica)
  * \return int
  *
  */
-int eDepende_siguienteId(eDepende listado[], int limite);
-
-/** \brief
- *
- * \param listado[] eDepende
- * \param limite int
- * \return int
- *
- */
-int eDepende_pedirIdYBuscar(eDepende listado[], int limite);
+int eDepende_pedirIdGenericaYBuscar(eDepende listado[], int limite);
 
 /** \brief
  *
@@ -530,7 +539,7 @@ void eDepende_ordenar(eDepende listado[], int limite, char orden[]);
  */
 void eDepende_gestion(eDepende listadoDepende[], int limiteDepende, eGenerica listadoGenerica[], int limiteGenerica);
 
-/* FUNCIONES PARA ESTRUCTURAS DE ESTADISTICAS */
+/************************************ FUNCIONES PARA ESTRUCTURAS DE ESTADISTICAS ************************************/
 
 /** \brief
  *
@@ -540,6 +549,15 @@ void eDepende_gestion(eDepende listadoDepende[], int limiteDepende, eGenerica li
  *
  */
 int eEstadisticas_init(eEstadisticas listado[], int limite);
+
+/** \brief
+ *
+ * \param listado[] eEstadisticas
+ * \param limite int
+ * \return int
+ *
+ */
+int eEstadisticas_siguienteId(eEstadisticas listado[], int limite);
 
 /** \brief
  *
@@ -555,29 +573,29 @@ int eEstadisticas_buscarPorId(eEstadisticas listado[], int limite, int id);
  *
  * \param listado[] eEstadisticas
  * \param limite int
- * \param idDepende int
- * \return int
- *
- */
-int eEstadisticas_buscarPorIdGenerica(eEstadisticas listado[], int limite, int idDepende);
-
-/** \brief
- *
- * \param listado[] eEstadisticas
- * \param limite int
- * \return int
- *
- */
-int eEstadisticas_siguienteId(eEstadisticas listado[], int limite);
-
-/** \brief
- *
- * \param listado[] eEstadisticas
- * \param limite int
  * \return int
  *
  */
 int eEstadisticas_pedirIdYBuscar(eEstadisticas listado[], int limite);
+
+/** \brief
+ *
+ * \param listado[] eEstadisticas
+ * \param limite int
+ * \param IdDepende int
+ * \return int
+ *
+ */
+int eEstadisticas_buscarPorIdDepende(eEstadisticas listado[], int limite, int IdDepende);
+
+/** \brief
+ *
+ * \param listado[] eEstadisticas
+ * \param limite int
+ * \return int
+ *
+ */
+int eEstadisticas_pedirIdDependeYBuscar(eEstadisticas listado[], int limite);
 
 /** \brief
  *
@@ -597,8 +615,6 @@ int eEstadisticas_buscarPorNombre(eEstadisticas listado[], int limite, char nomb
  *
  */
 int eEstadisticas_pedirNombreYBuscar(eEstadisticas listado[], int limite);
-
-
 
 /** \brief
  *
@@ -717,6 +733,7 @@ void eEstadisticas_ordenar(eEstadisticas listado[], int limite, char orden[]);
  * \return void
  *
  */
-void eEstadisticas_gestion(eEstadisticas listado[], int limite);
+void eEstadisticas_gestion(eEstadisticas listadoEstadisticas[], int limiteEstadisticas, eDepende listadoDepende[], int limiteDepende);
+
 
 #endif // ESTRUCTURAGENERICA_H_INCLUDED

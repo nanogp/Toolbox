@@ -574,6 +574,44 @@ int eDepende_pedirIdYBuscar(eDepende listado[], int limite)
 	return retorno;
 }
 
+int eDepende_buscarPorIdGenerica(eDepende listado[], int limite, int IdGenerica)
+{
+	int retorno = -1;
+	int i;
+
+	for(i=0 ; i<limite ; i++)
+	{
+		if(listado[i].estado == OCUPADO && listado[i].idGenerica == IdGenerica)
+		{
+			retorno = i;
+			break;
+		}
+	}
+	return retorno;
+}
+
+int eDepende_pedirIdGenericaYBuscar(eDepende listado[], int limite)
+{
+	int retorno;
+	int id;
+
+	do
+	{
+		eDepende_mostrarListado(listado, limite);
+		id = pedirIntValido(GENERICA_MSJ_INGRESE_ID, GENERICA_MSJ_REINGRESE_ID, GENERICA_ID_MIN, GENERICA_ID_MAX);
+		retorno = eDepende_buscarPorIdGenerica(listado, limite, id);
+		if(retorno < 0)
+		{
+			imprimirEnPantalla(GENERICA_MSJ_ID_NO_EXISTE);
+		}
+	}
+	while(retorno < 0);
+
+	return retorno;
+}
+
+
+
 int eDepende_estaVacio(eDepende listado[], int limite)
 {
 	int retorno = 1;
@@ -918,3 +956,468 @@ void eDepende_gestion(eDepende listadoDepende[], int limiteDepende, eGenerica li
 }
 
 /************************************************************************************************************************/
+
+int eEstadisticas_init(eEstadisticas listado[], int limite)
+{
+	int retorno = -1;
+	int i;
+
+	retorno = 0;
+	for(i=0 ; i<limite ; i++)
+	{
+		listado[i].estado= LIBRE;
+		listado[i].idEstadisticas= 0;
+	}
+	return retorno;
+}
+
+int eEstadisticas_buscarLugarLibre(eEstadisticas listado[], int limite)
+{
+	int retorno = -1;
+	int i;
+
+	for(i=0 ; i<limite ; i++)
+	{
+		if(listado[i].estado == LIBRE)
+		{
+			retorno = i;
+			break;
+		}
+	}
+	return retorno;
+}
+
+int eEstadisticas_siguienteId(eEstadisticas listado[], int limite)
+{
+	int retorno = 0;
+	int i;
+
+	for(i=0; i<limite; i++)
+	{
+		if(listado[i].estado == OCUPADO)
+		{
+			if(listado[i].idEstadisticas > retorno)
+			{
+				 retorno = listado[i].idEstadisticas;
+			}
+		}
+	}
+	return retorno+1;
+}
+
+int eEstadisticas_buscarPorId(eEstadisticas listado[], int limite, int id)
+{
+	int retorno = -1;
+	int i;
+
+	for(i=0 ; i<limite ; i++)
+	{
+		if(listado[i].estado == OCUPADO && listado[i].idEstadisticas == id)
+		{
+			retorno = i;
+			break;
+		}
+	}
+	return retorno;
+}
+
+int eEstadisticas_pedirIdYBuscar(eEstadisticas listado[], int limite)
+{
+	int retorno;
+	int id;
+
+	do
+	{
+		eEstadisticas_mostrarListado(listado, limite);
+		id = pedirIntValido(ESTADISTICAS_MSJ_INGRESE_ID, ESTADISTICAS_MSJ_REINGRESE_ID, ESTADISTICAS_ID_MIN, ESTADISTICAS_ID_MAX);
+		retorno = eEstadisticas_buscarPorId(listado, limite, id);
+		if(retorno < 0)
+		{
+			imprimirEnPantalla(ESTADISTICAS_MSJ_ID_NO_EXISTE);
+		}
+	}
+	while(retorno < 0);
+
+	return retorno;
+}
+
+int eEstadisticas_buscarPorIdDepende(eEstadisticas listado[], int limite, int IdDepende)
+{
+	int retorno = -1;
+	int i;
+
+	for(i=0 ; i<limite ; i++)
+	{
+		if(listado[i].estado == OCUPADO && listado[i].idDepende == IdDepende)
+		{
+			retorno = i;
+			break;
+		}
+	}
+	return retorno;
+}
+
+int eEstadisticas_pedirIdDependeYBuscar(eEstadisticas listado[], int limite)
+{
+	int retorno;
+	int id;
+
+	do
+	{
+		eEstadisticas_mostrarListado(listado, limite);
+		id = pedirIntValido(DEPENDE_MSJ_INGRESE_ID, DEPENDE_MSJ_REINGRESE_ID, DEPENDE_ID_MIN, DEPENDE_ID_MAX);
+		retorno = eEstadisticas_buscarPorIdDepende(listado, limite, id);
+		if(retorno < 0)
+		{
+			imprimirEnPantalla(DEPENDE_MSJ_ID_NO_EXISTE);
+		}
+	}
+	while(retorno < 0);
+
+	return retorno;
+}
+
+
+
+int eEstadisticas_estaVacio(eEstadisticas listado[], int limite)
+{
+	int retorno = 1;
+	int i;
+
+	for(i=0 ; i<limite ; i++)
+	{
+		if(listado[i].estado == OCUPADO)
+		{
+			retorno = 0;
+			break;//con el primer ocupado ya se que no esta vacio
+		}
+	}
+	return retorno;
+}
+
+void eEstadisticas_mostrarUno(eEstadisticas parametro)
+{
+	 printf(ESTADISTICAS_MASCARA_MOSTRAR_UNO, parametro.idEstadisticas, parametro.nombre, parametro.estado);
+
+}
+
+void eEstadisticas_mostrarListado(eEstadisticas listado[], int limite)
+{
+	int i;
+	int contadorMostrados = 0;
+
+	if(eEstadisticas_estaVacio(listado, limite) == 1)
+	{
+		imprimirEnPantalla(ESTADISTICAS_MSJ_LISTA_VACIA);
+	}
+	else
+	{
+		printf(ESTADISTICAS_CABECERA_LISTADO);
+		for(i=0; i<limite; i++)
+		{
+			if(listado[i].estado==OCUPADO)
+			{
+				eEstadisticas_mostrarUno(listado[i]);
+				contadorMostrados++;
+
+				if(contadorMostrados%20 == 0)
+				{
+					//cada 20 registros hago una pausa
+					ejecutarEnConsola(HACER_PAUSA);
+					imprimirEnPantalla(ESTADISTICAS_CABECERA_LISTADO);
+				}
+			}
+
+		}
+	}
+}
+
+void eEstadisticas_listar(eEstadisticas listado[], int limite)
+{
+	ejecutarEnConsola(LIMPIAR_PANTALLA);
+	imprimirTitulo(ESTADISTICAS_TITULO_LISTA);
+
+	eEstadisticas_mostrarListado(listado, limite);
+
+	ejecutarEnConsola(HACER_PAUSA);
+}
+
+void eEstadisticas_pedirNombre(char retorno[])
+{
+	pedirStringValido(retorno, ESTADISTICAS_MSJ_INGRESE_NOMBRE, ESTADISTICAS_MSJ_REINGRESE_NOMBRE, ESTADISTICAS_LARGO_NOMBRE);
+}
+
+eEstadisticas eEstadisticas_pedirIngreso(eEstadisticas listado[], int limite)
+{
+	eEstadisticas retorno;
+
+	retorno.idEstadisticas = eEstadisticas_siguienteId(listado, limite);
+
+	eEstadisticas_pedirNombre((char *)&(retorno.nombre));
+
+	//retorno.demasCampos
+
+	retorno.estado = OCUPADO;
+
+	return retorno;
+}
+
+void eEstadisticas_alta(eEstadisticas listadoEstadisticas[], int limiteEstadisticas, eDepende listadoDepende[], int limiteDepende)
+{
+	eEstadisticas registro;
+	char confirmacion;
+	int posicion;
+
+	posicion = eEstadisticas_buscarLugarLibre(listadoEstadisticas, limiteEstadisticas);
+	if(posicion < 0)
+	{
+		imprimirEnPantalla(ESTADISTICAS_MSJ_NO_MAS_LUGAR);
+	}
+	else
+	{
+		ejecutarEnConsola(LIMPIAR_PANTALLA);
+		imprimirTitulo(ESTADISTICAS_TITULO_ALTA);
+		registro = eEstadisticas_pedirIngreso(listadoEstadisticas, limiteEstadisticas);
+		eEstadisticas_mostrarUno(registro);
+
+		confirmacion = pedirConfirmacion(MSJ_CONFIRMA_CORRECTOS);
+
+		if(confirmacion == 'S')
+		{
+			listadoEstadisticas[posicion] = registro;
+			eEstadisticas_ordenar(listadoEstadisticas, limiteEstadisticas, ESTADISTICAS_ORDEN);
+			imprimirEnPantalla(ESTADISTICAS_MSJ_ALTA_OK);
+		}
+		else
+		{
+			imprimirEnPantalla(MSJ_CANCELO_GESTION);
+		}
+	}
+	ejecutarEnConsola(HACER_PAUSA);
+}
+
+void eEstadisticas_baja(eEstadisticas listadoEstadisticas[], int limiteEstadisticas, eDepende listadoDepende[], int limiteDepende)
+{
+	char confirmacion;
+	int posicion;
+
+	ejecutarEnConsola(LIMPIAR_PANTALLA);
+	imprimirTitulo(ESTADISTICAS_TITULO_BAJA);
+
+	if(eEstadisticas_estaVacio(listadoEstadisticas, limiteEstadisticas) == 1)
+	{
+		imprimirEnPantalla(ESTADISTICAS_MSJ_LISTA_VACIA);
+	}
+	else
+	{
+		posicion = eEstadisticas_pedirIdYBuscar(listadoEstadisticas, limiteEstadisticas);
+
+		ejecutarEnConsola(LIMPIAR_PANTALLA);
+		imprimirTitulo(ESTADISTICAS_TITULO_BAJA);
+
+		eEstadisticas_mostrarUno(listadoEstadisticas[posicion]);
+
+		confirmacion = pedirConfirmacion(ESTADISTICAS_MSJ_CONFIRMAR_BAJA);
+
+		if(confirmacion == 'S')
+		{
+			listadoEstadisticas[posicion].estado = LIBRE;
+			imprimirEnPantalla(ESTADISTICAS_MSJ_BAJA_OK);
+		}
+		else
+		{
+			imprimirEnPantalla(MSJ_CANCELO_GESTION);
+		}
+	}
+
+	ejecutarEnConsola(HACER_PAUSA);
+}
+
+void eEstadisticas_modificarUno(eEstadisticas registro[])
+{
+	eMenu menuModificar = {/*cantidad de opciones*/ESTADISTICAS_MENU_MODIFICAR_UNO_CANT,
+							/*codigos*/{1,2,3,4,0},
+							/*descripciones*/{ESTADISTICAS_MENU_MODIFICAR_UNO_DETALLE1,ESTADISTICAS_MENU_MODIFICAR_UNO_DETALLE2,ESTADISTICAS_MENU_MODIFICAR_UNO_DETALLE3,ESTADISTICAS_MENU_MODIFICAR_UNO_DETALLE4,ESTADISTICAS_MENU_MODIFICAR_UNO_DETALLE5},
+							/*titulo del menu*/{ESTADISTICAS_MENU_MODIFICAR_UNO_TITULO}};
+	int opcion;
+
+	ejecutarEnConsola(LIMPIAR_PANTALLA);
+	imprimirTitulo("MODIFICANDO REGISTRO");
+	imprimirEnPantalla("\nDatos a modificar:");
+	eEstadisticas_mostrarUno(*registro);
+
+	opcion = pedirOpcion(menuModificar);
+	switch(opcion)
+	{
+		case 1:
+			eEstadisticas_pedirNombre((char *)&registro->nombre);
+			break;
+		case 2:
+			eEstadisticas_pedirNombre((char *)&registro->nombre);
+			break;
+		case 3:
+			//registro->idEstadisticas;
+			break;
+		case 4:
+			//registro->campoN;
+			break;
+		case 0:
+			break;
+	}
+}
+
+void eEstadisticas_modificacion(eEstadisticas listado[], int limite)
+{
+	eEstadisticas registro;
+	char confirmacion;
+	int posicion;
+
+	ejecutarEnConsola(LIMPIAR_PANTALLA);
+	imprimirTitulo(ESTADISTICAS_TITULO_MODIFICACION);
+
+	if(eEstadisticas_estaVacio(listado, limite) == 1)
+	{
+		imprimirEnPantalla(ESTADISTICAS_MSJ_LISTA_VACIA);
+	}
+	else
+	{
+		posicion = eEstadisticas_pedirIdYBuscar(listado, limite);
+		//traigo el registro del id elegido para no pisar directo sobre el listado
+		registro = listado[posicion];
+
+		eEstadisticas_modificarUno(&registro);
+		eEstadisticas_ordenar(listado, limite, ESTADISTICAS_ORDEN);
+
+		/*if(aca se pregunta si hubo cambios que requieran reprocesar)
+		{
+			se recalcularian promedios por ej.
+		}*/
+
+		ejecutarEnConsola(LIMPIAR_PANTALLA);
+		imprimirTitulo(ESTADISTICAS_TITULO_MODIFICACION);
+
+		imprimirEnPantalla(ESTADISTICAS_MSJ_REGISTRO_ACTUAL);
+		eEstadisticas_mostrarUno(listado[posicion]);
+
+		imprimirEnPantalla(ESTADISTICAS_MSJ_REGISTRO_MODIFICADO);
+		eEstadisticas_mostrarUno(registro);
+
+		confirmacion = pedirConfirmacion(MSJ_CONFIRMA_CORRECTOS);
+
+		if(confirmacion == 'S')
+		{
+			listado[posicion] = registro;
+
+			imprimirEnPantalla(ESTADISTICAS_MSJ_MODIFICACION_OK);
+		}
+		else
+		{
+			imprimirEnPantalla(MSJ_CANCELO_GESTION);
+		}
+	}
+
+	ejecutarEnConsola(HACER_PAUSA);
+}
+
+void eEstadisticas_ordenar(eEstadisticas listado[], int limite, char orden[])
+{
+	int i;
+	int j;
+	eEstadisticas aux;
+
+	if(strcmp(orden, "idAsc") == 0)
+	{
+		for(i=0 ; i<limite-1 ; i++)
+		{
+			for(j=i+1 ; j<limite ; j++)
+			{
+				if(listado[i].idEstadisticas > listado[j].idEstadisticas)
+				{
+					aux = listado[i];
+					listado[i] = listado[j];
+					listado[j] = aux;
+				}
+			}
+		}
+	}
+	else if(strcmp(orden, "idDesc") == 0)
+	{
+		for(i=0 ; i<limite-1 ; i++)
+		{
+			for(j=i+1 ; j<limite ; j++)
+			{
+				if(listado[i].idEstadisticas < listado[j].idEstadisticas)
+				{
+					aux = listado[i];
+					listado[i] = listado[j];
+					listado[j] = aux;
+				}
+			}
+		}
+	}
+	else if(strcmp(orden, "nombreAsc") == 0)
+	{
+		for(i=0 ; i<limite-1 ; i++)
+		{
+			for(j=i+1 ; j<limite ; j++)
+			{
+				if(strcmpi(listado[i].nombre, listado[j].nombre) > 0)
+				{
+					aux = listado[i];
+					listado[i] = listado[j];
+					listado[j] = aux;
+				}
+			}
+		}
+	}
+	else if(strcmp(orden, "nombreDesc") == 0)
+	{
+		for(i=0 ; i<limite-1 ; i++)
+		{
+			for(j=i+1 ; j<limite ; j++)
+			{
+				if(strcmpi(listado[i].nombre, listado[j].nombre) < 0)
+				{
+					aux = listado[i];
+					listado[i] = listado[j];
+					listado[j] = aux;
+				}
+			}
+		}
+	}
+}
+
+void eEstadisticas_gestion(eEstadisticas listadoEstadisticas[], int limiteEstadisticas, eDepende listadoDepende[], int limiteDepende)
+{
+	eMenu menuGestion = {/*cantidad de opciones*/ESTADISTICAS_MENU_GESTION_CANT,
+						/*codigos*/{1,2,3,4,0},
+						/*descripciones*/{ESTADISTICAS_MENU_GESTION_DETALLE1,ESTADISTICAS_MENU_GESTION_DETALLE2,ESTADISTICAS_MENU_GESTION_DETALLE3,ESTADISTICAS_MENU_GESTION_DETALLE4,ESTADISTICAS_MENU_GESTION_DETALLE5},
+						/*titulo del menu*/{ESTADISTICAS_MENU_GESTION_TITULO}};
+	int opcion;
+	char volverAlMain = 'N';
+
+	do
+	{
+		ejecutarEnConsola(LIMPIAR_PANTALLA);
+		opcion = pedirOpcion(menuGestion);
+		switch(opcion)
+		{
+			case 1:
+				eEstadisticas_alta(listadoEstadisticas, limiteEstadisticas, listadoDepende, limiteDepende);
+				break;
+			case 2:
+				eEstadisticas_baja(listadoEstadisticas, limiteEstadisticas, listadoDepende, limiteDepende);
+				break;
+			case 3:
+				eEstadisticas_modificacion(listadoEstadisticas, limiteEstadisticas);
+				break;
+			case 4:
+				eEstadisticas_listar(listadoEstadisticas, limiteEstadisticas);
+				break;
+			case 0:
+				volverAlMain = 'S';
+				break;
+		}
+	}
+	while(volverAlMain == 'N');
+}
