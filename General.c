@@ -3,8 +3,6 @@
 #include <stdlib.h>
 #include <string.h>
 
-#define STRING_LARGO_MAXIMO 1000
-
 void ejecutarEnConsola(char lineaDeComando[])
 {
     printf("\n");
@@ -104,7 +102,7 @@ void pedirString(char retorno[], char mensajeIngreso[])
 
 void pedirStringValido(char retorno[], char mensajeIngreso[], char mensajeReingreso[], int limite)
 {
-    char stringIngresado[STRING_LARGO_MAXIMO];
+    char stringIngresado[STRING_LARGO_MAX];
 
     pedirString(stringIngresado, mensajeIngreso);
 
@@ -151,7 +149,7 @@ void imprimirEnPantalla(char texto[])
 void generarTitulo(char texto[])
 {
     int i;
-    char nuevoTitulo[LARGO_TITULO] = "| ";
+    char nuevoTitulo[TITULO_LARGO_MAX] = "| ";
 
     strcat(nuevoTitulo, texto);
     strcat(nuevoTitulo, " |");
@@ -176,7 +174,7 @@ void generarTitulo(char texto[])
 
 void imprimirTitulo(char texto[])
 {
-    char titulo[LARGO_TITULO];
+    char titulo[TITULO_LARGO_MAX];
     strcpy(titulo, texto);
     generarTitulo(titulo);
     imprimirEnPantalla(titulo);

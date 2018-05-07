@@ -71,18 +71,18 @@ int eGenerica_buscarPorId(eGenerica listado[], int limite, int id)
 
 int eGenerica_estaVacio(eGenerica listado[], int limite)
 {
-    int retorno = 1;
-    int i;
+	int retorno = 1;
+	int i;
 
-    for(i=0 ; i<limite ; i++)
-    {
-        if(listado[i].estado == OCUPADO)
-        {
-            retorno = 0;
-            break;//con el primer ocupado ya se que no esta vacio
-        }
-    }
-    return retorno;
+	for(i=0 ; i<limite ; i++)
+	{
+		if(listado[i].estado == OCUPADO)
+		{
+			retorno = 0;
+			break;//con el primer ocupado ya se que no esta vacio
+		}
+	}
+	return retorno;
 }
 
 void eGenerica_mostrarUno(eGenerica parametro)
@@ -94,23 +94,42 @@ void eGenerica_mostrarUno(eGenerica parametro)
 void eGenerica_mostrarListado(eGenerica listado[], int limite)
 {
 	int i;
+	int contadorMostrados = 0;
 
-    printf(GENERICA_CABECERA_LISTADO);
-    if(eGenerica_estaVacio(listado, limite) == 1)
-    {
-        imprimirEnPantalla(GENERICA_MSJ_LISTA_VACIA);
-        ejecutarEnConsola(HACER_PAUSA);
-    }
-    else
-    {
-        for(i=0; i<limite; i++)
-        {
-            if(listado[i].estado==OCUPADO)
-            {
-                eGenerica_mostrarUno(listado[i]);
-            }
-        }
-    }
+	if(eGenerica_estaVacio(listado, limite) == 1)
+	{
+		imprimirEnPantalla(GENERICA_MSJ_LISTA_VACIA);
+	}
+	else
+	{
+		printf(GENERICA_CABECERA_LISTADO);
+		for(i=0; i<limite; i++)
+		{
+			if(listado[i].estado==OCUPADO)
+			{
+				eGenerica_mostrarUno(listado[i]);
+				contadorMostrados++;
+
+				if(contadorMostrados%20 == 0)
+				{
+					//cada 20 registros hago una pausa
+					ejecutarEnConsola(HACER_PAUSA);
+					imprimirEnPantalla(GENERICA_CABECERA_LISTADO);
+				}
+			}
+
+		}
+	}
+}
+
+void eGenerica_listar(eGenerica listado[], int limite)
+{
+	ejecutarEnConsola(LIMPIAR_PANTALLA);
+	imprimirTitulo(GENERICA_TITULO_LISTA);
+
+	eGenerica_mostrarListado(listado, limite);
+
+	ejecutarEnConsola(HACER_PAUSA);
 }
 
 void eGenerica_pedirNombre(char retorno[])
@@ -156,7 +175,7 @@ void eGenerica_alta(eGenerica listado[], int limite)
 		if(confirmacion == 'S')
 		{
 			listado[posicion] = registro;
-			eGenerica_ordenar(listado, limite, "nombreAsc");
+			eGenerica_ordenar(listado, limite, GENERICA_ORDEN);
 			imprimirEnPantalla(GENERICA_MSJ_ALTA_OK);
 		}
 		else
@@ -175,16 +194,16 @@ void eGenerica_baja(eGenerica listado[], int limite)
 	ejecutarEnConsola(LIMPIAR_PANTALLA);
 	imprimirTitulo(GENERICA_TITULO_BAJA);
 
-    if(eGenerica_estaVacio(listado, limite) == 1)
-    {
-        imprimirEnPantalla(GENERICA_MSJ_LISTA_VACIA);
-    }
-    else
-    {
-        posicion = eGenerica_pedirIdYBuscar(listado, limite);
+	if(eGenerica_estaVacio(listado, limite) == 1)
+	{
+		imprimirEnPantalla(GENERICA_MSJ_LISTA_VACIA);
+	}
+	else
+	{
+		posicion = eGenerica_pedirIdYBuscar(listado, limite);
 
-        ejecutarEnConsola(LIMPIAR_PANTALLA);
-        imprimirTitulo(GENERICA_TITULO_BAJA);
+		ejecutarEnConsola(LIMPIAR_PANTALLA);
+		imprimirTitulo(GENERICA_TITULO_BAJA);
 
 		eGenerica_mostrarUno(listado[posicion]);
 
@@ -210,7 +229,7 @@ void eGenerica_modificarUno(eGenerica registro[])
 							5, //cantidad de opciones
 							{1,2,3,4,0}, //codigos
 							{"1. Nombre","2. Legajo","3. Edad","4. Nota","0. Cancelar"}, //descripciones
-							{"\nQu‚ desea modificar?"} //titulo del menu
+							{"Qu‚ desea modificar?"} //titulo del menu
 						   };
 	int opcion;
 
@@ -252,7 +271,7 @@ int eGenerica_pedirIdYBuscar(eGenerica listado[], int limite)
 		if(retorno < 0)
 		{
 			imprimirEnPantalla(GENERICA_MSJ_ID_NO_EXISTE);
- 		}
+		}
 	}
 	while(retorno < 0);
 
@@ -275,37 +294,38 @@ void eGenerica_modificacion(eGenerica listado[], int limite)
 	else
 	{
 		posicion = eGenerica_pedirIdYBuscar(listado, limite);
-        //traigo el registro del id elegido para no pisar directo sobre el listado
-        registro = listado[posicion];
+		//traigo el registro del id elegido para no pisar directo sobre el listado
+		registro = listado[posicion];
 
-        eGenerica_modificarUno(&registro);
+		eGenerica_modificarUno(&registro);
+		eGenerica_ordenar(listado, limite, GENERICA_ORDEN);
 
-        /*if(aca se pregunta si hubo cambios que requieran reprocesar)
-        {
-            se recalcularian promedios por ej.
-        }*/
+		/*if(aca se pregunta si hubo cambios que requieran reprocesar)
+		{
+			se recalcularian promedios por ej.
+		}*/
 
-        ejecutarEnConsola(LIMPIAR_PANTALLA);
-        imprimirTitulo(GENERICA_TITULO_MODIFICACION);
+		ejecutarEnConsola(LIMPIAR_PANTALLA);
+		imprimirTitulo(GENERICA_TITULO_MODIFICACION);
 
-        imprimirEnPantalla("EstructuraGenerica actual:");
-        eGenerica_mostrarUno(listado[posicion]);
+		imprimirEnPantalla(GENERICA_MSJ_REGISTRO_ACTUAL);
+		eGenerica_mostrarUno(listado[posicion]);
 
-        imprimirEnPantalla("EstructuraGenerica nuevo:");
-        eGenerica_mostrarUno(registro);
+		imprimirEnPantalla(GENERICA_MSJ_REGISTRO_MODIFICADO);
+		eGenerica_mostrarUno(registro);
 
-        confirmacion = pedirConfirmacion(MSJ_CONFIRMA_CORRECTOS);
+		confirmacion = pedirConfirmacion(MSJ_CONFIRMA_CORRECTOS);
 
-        if(confirmacion == 'S')
-        {
-            listado[posicion] = registro;
-            //aca podria ordenarse con los datos nuevos;
-            imprimirEnPantalla(GENERICA_MSJ_MODIFICACION_OK);
-        }
-        else
-        {
-            imprimirEnPantalla(MSJ_CANCELO_GESTION);
-        }
+		if(confirmacion == 'S')
+		{
+			listado[posicion] = registro;
+
+			imprimirEnPantalla(GENERICA_MSJ_MODIFICACION_OK);
+		}
+		else
+		{
+			imprimirEnPantalla(MSJ_CANCELO_GESTION);
+		}
 	}
 
 	ejecutarEnConsola(HACER_PAUSA);

@@ -3,7 +3,8 @@
 #define DEFINIR_MACRO_STRING(nombre_macro) #nombre_macro
 #define LIMPIAR_PANTALLA DEFINIR_MACRO_STRING(cls)
 #define HACER_PAUSA DEFINIR_MACRO_STRING(pause)
-#define LARGO_TITULO 1000
+#define TITULO_LARGO_MAX 1000
+#define STRING_LARGO_MAX 1000
 
 /** \brief corre comandos en la consola del sistema operativo
  *

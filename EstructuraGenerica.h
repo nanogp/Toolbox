@@ -10,24 +10,28 @@
 #define GENERICA_LARGO_NOMBRE 50
 #define GENERICA_ID_MIN 1
 #define GENERICA_ID_MAX 1000000
+#define GENERICA_ORDEN DEFINIR_MACRO_STRING(nombreAsc)
 #define GENERICA_TITULO_GESTION DEFINIR_MACRO_STRING(GESTION DE GENERICA)
 #define GENERICA_TITULO_ALTA DEFINIR_MACRO_STRING(ALTA DE GENERICA)
 #define GENERICA_TITULO_BAJA DEFINIR_MACRO_STRING(BAJA DE GENERICA)
 #define GENERICA_TITULO_MODIFICACION DEFINIR_MACRO_STRING(MODIFICACION DE GENERICA)
+#define GENERICA_TITULO_LISTA DEFINIR_MACRO_STRING(LISTADO DE GENERICA)
 #define GENERICA_MASCARA_MOSTRAR_UNO DEFINIR_MACRO_STRING(\n %d - %s - %d)
 #define GENERICA_CABECERA_LISTADO DEFINIR_MACRO_STRING(\n ID  - nombre - edad)
 #define GENERICA_MSJ_LISTA_VACIA DEFINIR_MACRO_STRING(\n\nLa lista esta vacia o todos los registros se dieron de baja)
 #define GENERICA_MSJ_NO_MAS_LUGAR DEFINIR_MACRO_STRING(\nNo hay m s lugares disponibles para altas de Generica)
-#define GENERICA_MSJ_ALTA_OK DEFINIR_MACRO_STRING(\nEl Generica se dio de alta)
-#define GENERICA_MSJ_INGRESE_ID DEFINIR_MACRO_STRING(\n\nIngrese el ID de EstructuraGenerica: )
+#define GENERICA_MSJ_INGRESE_ID DEFINIR_MACRO_STRING(\n\nIngrese el ID de Generica: )
 #define GENERICA_MSJ_REINGRESE_ID DEFINIR_MACRO_STRING(\nEl ID debe ser un n¡mero mayor que cero. Reingrese un ID v lido: )
-#define GENERICA_MSJ_ID_NO_EXISTE DEFINIR_MACRO_STRING(\nEl ID de EstructuraGenerica ingresado no existe)
+#define GENERICA_MSJ_ID_NO_EXISTE DEFINIR_MACRO_STRING(\nEl ID de Generica ingresado no existe)
 #define GENERICA_MSJ_INGRESE_NOMBRE DEFINIR_MACRO_STRING(\nIngrese nombre: )
 #define GENERICA_MSJ_REINGRESE_NOMBRE DEFINIR_MACRO_STRING(\nNombre muy largo. Reingrese por favor: )
 #define GENERICA_MSJ_REINTENTAR_GESTION DEFINIR_MACRO_STRING(Desea reintentar la gesti¢n?)
-#define GENERICA_MSJ_CONFIRMAR_BAJA DEFINIR_MACRO_STRING(Confirma que desea dar de baja dicho EstructuraGenerica?)
-#define GENERICA_MSJ_BAJA_OK DEFINIR_MACRO_STRING(\nEl EstructuraGenerica se dio de baja)
-#define GENERICA_MSJ_MODIFICACION_OK DEFINIR_MACRO_STRING(\nEl EstructuraGenerica se modificà.)
+#define GENERICA_MSJ_ALTA_OK DEFINIR_MACRO_STRING(\nEl Generica se dio de alta)
+#define GENERICA_MSJ_CONFIRMAR_BAJA DEFINIR_MACRO_STRING(Confirma que desea dar de baja dicho Generica?)
+#define GENERICA_MSJ_BAJA_OK DEFINIR_MACRO_STRING(\nEl Generica se dio de baja)
+#define GENERICA_MSJ_REGISTRO_ACTUAL DEFINIR_MACRO_STRING(\nGenerica actual:)
+#define GENERICA_MSJ_REGISTRO_MODIFICADO DEFINIR_MACRO_STRING(\nGenerica modificado:)
+#define GENERICA_MSJ_MODIFICACION_OK DEFINIR_MACRO_STRING(\nEl Generica se modific¢.)
 
 #define DEPENDE_CANT_MAX 10
 #define DEPENDE_LARGO_NOMBRE 50
@@ -76,8 +80,8 @@ int eGenerica_siguienteId(eGenerica listado[], int limite);
 int eGenerica_buscarLugarLibre(eGenerica listado[], int limite);
 int eGenerica_estaVacio(eGenerica listado[], int limite);
 void eGenerica_mostrarUno(eGenerica parametro);
-void eGenerica_mostrarListado(eGenerica[], int limite);
-void eGenerica_mostrarListadoConBorrados(eGenerica[], int limite);
+void eGenerica_mostrarListado(eGenerica listado[], int limite);
+void eGenerica_listar(eGenerica listado[], int limite);
 void eGenerica_alta(eGenerica listado[], int limite);
 void eGenerica_baja(eGenerica listado[], int limite);
 void eGenerica_modificarUno(eGenerica registro[]);

@@ -12,7 +12,7 @@ int main()
     eMenu menuPrincipal = {
                             5, //limiteidad de opciones
                             {1,2,3,4,0}, //codigos
-                            {"1. Alta Generica","2. Baja Generica","3. Modificaci¢n Generica","4. Listado Generica","0. Salir"}, //descripciones
+                            {"1. Alta Generica","2. Baja Generica","3. Modificaci¢n Generica","4. Lista Generica","0. Salir"}, //descripciones
                             {"MENU GENERICO"} //titulo del menu
                             };
     int opcion;
@@ -40,7 +40,7 @@ int main()
                 eGenerica_modificacion(listadoGenerica, GENERICA_CANT_MAX);
                 break;
             case 4:
-                eGenerica_mostrarListado(listadoGenerica, GENERICA_CANT_MAX);
+                eGenerica_listar(listadoGenerica, GENERICA_CANT_MAX);
                 break;
             case 0:
                 salirDelPrograma = pedirConfirmacion("Confirma que desea salir del programa?");
