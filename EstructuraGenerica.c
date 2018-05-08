@@ -6,36 +6,36 @@
 #include <string.h>
 
 void eGenerica_initHardcode(eGenerica listado[])
-{                            /*nombre, clave, ID, estado*/
-	listado[0] = (eGenerica){{"Jose Luis tiene 1"}, {"UnaClave"}, 11, OCUPADO};
-	listado[1] = (eGenerica){{"Bobby Fisher va con 3"}, {"UnaClave"}, 12, OCUPADO};
-	listado[2] = (eGenerica){{"Donia Rosa tiene 2"}, {"UnaClave"}, 13, OCUPADO};
-	listado[3] = (eGenerica){{"Fulano tiene Mengano"}, {"UnaClave"}, 14, OCUPADO};
-	listado[4] = (eGenerica){{"Roque sin Penia tiene 0"}, {"UnaClave"}, 15, OCUPADO};
+{                            /*nombre, numero, ID, estado*/
+	listado[0] = (eGenerica){{"Jose Luis tiene 1"}, 12345, 11, OCUPADO};
+	listado[1] = (eGenerica){{"Bobby Fisher tiene 3"}, 12345, 12, OCUPADO};
+	listado[2] = (eGenerica){{"Donia Rosa tiene 2"}, 12345, 13, OCUPADO};
+	listado[3] = (eGenerica){{"Fulano tiene Mengano"}, 12345, 14, OCUPADO};
+	listado[4] = (eGenerica){{"Roque sin Penia tiene 0"}, 12345, 15, OCUPADO};
 	eGenerica_ordenar(listado, GENERICA_CANT_MAX, GENERICA_ORDEN);
 }
 
 void eDepende_initHardcode(eDepende listado[])
-{                            /*nombre, clave, ID, FK, estado*/
-	listado[0] = (eDepende){{"De Jose Luis"}, 101, 11, OCUPADO};
-	listado[1] = (eDepende){{"De Bobby Fisher uno"}, 102, 12, OCUPADO};
-	listado[2] = (eDepende){{"De Bobby Fisher dos"}, 103, 12, OCUPADO};
-	listado[3] = (eDepende){{"De Bobby Fisher tres"}, 104, 12, OCUPADO};
-	listado[4] = (eDepende){{"Depende de Donia Rosa uno"}, 105, 13, OCUPADO};
-	listado[5] = (eDepende){{"Depende de Donia Rosa dos"}, 106, 13, OCUPADO};
-	listado[6] = (eDepende){{"Este es Mengano"}, 107, 14, OCUPADO};
+{                            /*nombre, numero, ID, FK, estado*/
+	listado[0] = (eDepende){{"De Jose Luis"}, 12345, 101, 11, OCUPADO};
+	listado[1] = (eDepende){{"De Bobby Fisher uno"}, 12345, 102, 12, OCUPADO};
+	listado[2] = (eDepende){{"De Bobby Fisher dos"}, 12345, 103, 12, OCUPADO};
+	listado[3] = (eDepende){{"De Bobby Fisher tres"}, 12345, 104, 12, OCUPADO};
+	listado[4] = (eDepende){{"Depende de Donia Rosa uno"}, 12345, 105, 13, OCUPADO};
+	listado[5] = (eDepende){{"Depende de Donia Rosa dos"}, 12345, 106, 13, OCUPADO};
+	listado[6] = (eDepende){{"Este es Mengano"}, 12345, 107, 14, OCUPADO};
 	eDepende_ordenar(listado, DEPENDE_CANT_MAX, DEPENDE_ORDEN);
 }
 
 void eEstadisticas_initHardcode(eEstadisticas listado[])
-{								/*nombre, clave, ID, FK, estado*/
-	listado[0] = (eEstadisticas){{"Estadisticas de Jose Luis"}, 1001, 101, OCUPADO};
-	listado[1] = (eEstadisticas){{"Estadisticas Bobby Fisher uno"}, 1002, 102, OCUPADO};
-	listado[2] = (eEstadisticas){{"Estadisticas Bobby Fisher uno"}, 1003, 102, OCUPADO};
-	listado[3] = (eEstadisticas){{"Estadisticas Bobby Fisher dos"}, 1004, 103, OCUPADO};
-	listado[4] = (eEstadisticas){{"Estadisticas Bobby Fisher tres"}, 1005, 104, OCUPADO};
-	listado[5] = (eEstadisticas){{"Estadisticas Bobby Fisher tres"}, 1006, 104, OCUPADO};
-	listado[6] = (eEstadisticas){{"Estadisticas Bobby Fisher tres"}, 1007, 104, OCUPADO};
+{								/*nombre, numero, ID, FK, estado*/
+	listado[0] = (eEstadisticas){{"Estadisticas de Jose Luis"}, 12345, 1001, 101, OCUPADO};
+	listado[1] = (eEstadisticas){{"Estadisticas Bobby Fisher uno"}, 12345, 1002, 102, OCUPADO};
+	listado[2] = (eEstadisticas){{"Estadisticas Bobby Fisher uno"}, 12345, 1003, 102, OCUPADO};
+	listado[3] = (eEstadisticas){{"Estadisticas Bobby Fisher dos"}, 12345, 1004, 103, OCUPADO};
+	listado[4] = (eEstadisticas){{"Estadisticas Bobby Fisher tres"}, 12345, 1005, 104, OCUPADO};
+	listado[5] = (eEstadisticas){{"Estadisticas Bobby Fisher tres"}, 12345, 1006, 104, OCUPADO};
+	listado[6] = (eEstadisticas){{"Estadisticas Bobby Fisher tres"}, 12345, 1007, 104, OCUPADO};
 	eEstadisticas_ordenar(listado, ESTADISTICAS_CANT_MAX, ESTADISTICAS_ORDEN);
 }
 
@@ -223,24 +223,9 @@ void eGenerica_pedirNombre(char retorno[])
 	pedirStringValido(retorno, GENERICA_MSJ_INGRESE_NOMBRE, GENERICA_MSJ_REINGRESE_NOMBRE, GENERICA_LARGO_NOMBRE);
 }
 
-void eGenerica_pedirClave(char retorno[])
+int eGenerica_pedirNumero()
 {
-	pedirStringValido(retorno, GENERICA_MSJ_INGRESE_CLAVE, GENERICA_MSJ_REINGRESE_CLAVE, GENERICA_LARGO_CLAVE);
-}
-
-int eGenerica_validarClave(eGenerica registro[], char claveIngresada[])
-{
-	int clavesCoinciden = 0;
-
-	if(strcmp(registro->clave, claveIngresada) != 0)
-	{
-		imprimirEnPantalla(GENERICA_MSJ_CLAVE_NO_COINCIDE);
-	}
-	else
-	{
-		clavesCoinciden = 1;
-	}
-	return clavesCoinciden;
+	return pedirIntValido(GENERICA_MSJ_INGRESE_NUMERO, GENERICA_MSJ_REINGRESE_NUMERO, GENERICA_NUMERO_MIN, GENERICA_NUMERO_MAX);
 }
 
 eGenerica eGenerica_pedirIngreso(eGenerica listado[], int limite)
@@ -251,7 +236,7 @@ eGenerica eGenerica_pedirIngreso(eGenerica listado[], int limite)
 
 	eGenerica_pedirNombre((char *)&(retorno.nombre));
 
-	//retorno.demasCampos
+	retorno.numero = eGenerica_pedirNumero();
 
 	retorno.estado = OCUPADO;
 
@@ -329,13 +314,14 @@ void eGenerica_baja(eGenerica listado[], int limite)
 	ejecutarEnConsola(HACER_PAUSA);
 }
 
-void eGenerica_modificarUno(eGenerica registro[])
+int eGenerica_modificarUno(eGenerica registro[])
 {
 	eMenu menuModificar = {/*cantidad de opciones*/GENERICA_MENU_MODIFICAR_UNO_CANT,
 							/*codigos*/{1,2,3,4,0},
 							/*descripciones*/{GENERICA_MENU_MODIFICAR_UNO_DETALLE1,GENERICA_MENU_MODIFICAR_UNO_DETALLE2,GENERICA_MENU_MODIFICAR_UNO_DETALLE3,GENERICA_MENU_MODIFICAR_UNO_DETALLE4,GENERICA_MENU_MODIFICAR_UNO_DETALLE5},
 							/*titulo del menu*/{GENERICA_MENU_MODIFICAR_UNO_TITULO}};
 	int opcion;
+	int huboCambios = 1;
 
 	ejecutarEnConsola(LIMPIAR_PANTALLA);
 	imprimirTitulo("MODIFICANDO REGISTRO");
@@ -349,7 +335,7 @@ void eGenerica_modificarUno(eGenerica registro[])
 			eGenerica_pedirNombre((char *)&registro->nombre);
 			break;
 		case 2:
-			eGenerica_pedirNombre((char *)&registro->nombre);
+			registro->numero = eGenerica_pedirNumero();
 			break;
 		case 3:
 			//registro->idGenerica;
@@ -358,8 +344,10 @@ void eGenerica_modificarUno(eGenerica registro[])
 			//registro->campoN;
 			break;
 		case 0:
+		    huboCambios = 0;
 			break;
 	}
+	return huboCambios;
 }
 
 void eGenerica_modificacion(eGenerica listado[], int limite)
@@ -367,6 +355,7 @@ void eGenerica_modificacion(eGenerica listado[], int limite)
 	eGenerica registro;
 	char confirmacion;
 	int posicion;
+	int huboCambios;
 
 	ejecutarEnConsola(LIMPIAR_PANTALLA);
 	imprimirTitulo(GENERICA_TITULO_MODIFICACION);
@@ -381,24 +370,31 @@ void eGenerica_modificacion(eGenerica listado[], int limite)
 		//traigo el registro del id elegido para no pisar directo sobre el listado
 		registro = listado[posicion];
 
-		eGenerica_modificarUno(&registro);
-		eGenerica_ordenar(listado, limite, GENERICA_ORDEN);
+		huboCambios = eGenerica_modificarUno(&registro);
+		if(huboCambios == 1)
+        {
+            eGenerica_ordenar(listado, limite, GENERICA_ORDEN);
 
-		/*if(aca se pregunta si hubo cambios que requieran reprocesar)
-		{
-			se recalcularian promedios por ej.
-		}*/
+            /*if(aca se pregunta si hubo cambios que requieran reprocesar)
+            {
+                se recalcularian promedios por ej.
+            }*/
 
-		ejecutarEnConsola(LIMPIAR_PANTALLA);
-		imprimirTitulo(GENERICA_TITULO_MODIFICACION);
+            ejecutarEnConsola(LIMPIAR_PANTALLA);
+            imprimirTitulo(GENERICA_TITULO_MODIFICACION);
 
-		imprimirEnPantalla(GENERICA_MSJ_REGISTRO_ACTUAL);
-		eGenerica_mostrarUno(listado[posicion]);
+            imprimirEnPantalla(GENERICA_MSJ_REGISTRO_ACTUAL);
+            eGenerica_mostrarUno(listado[posicion]);
 
-		imprimirEnPantalla(GENERICA_MSJ_REGISTRO_MODIFICADO);
-		eGenerica_mostrarUno(registro);
+            imprimirEnPantalla(GENERICA_MSJ_REGISTRO_MODIFICADO);
+            eGenerica_mostrarUno(registro);
 
-		confirmacion = pedirConfirmacion(MSJ_CONFIRMA_CORRECTOS);
+            confirmacion = pedirConfirmacion(MSJ_CONFIRMA_CORRECTOS);
+        }
+        else
+        {
+            confirmacion = 'N';
+        }
 
 		if(confirmacion == 'S')
 		{
@@ -600,44 +596,6 @@ int eDepende_pedirIdYBuscar(eDepende listado[], int limite)
 	return retorno;
 }
 
-int eDepende_buscarPorIdGenerica(eDepende listado[], int limite, int IdGenerica)
-{
-	int retorno = -1;
-	int i;
-
-	for(i=0 ; i<limite ; i++)
-	{
-		if(listado[i].estado == OCUPADO && listado[i].idGenerica == IdGenerica)
-		{
-			retorno = i;
-			break;
-		}
-	}
-	return retorno;
-}
-
-int eDepende_pedirIdGenericaYBuscar(eDepende listado[], int limite)
-{
-	int retorno;
-	int id;
-
-	do
-	{
-		eDepende_mostrarListado(listado, limite);
-		id = pedirIntValido(GENERICA_MSJ_INGRESE_ID, GENERICA_MSJ_REINGRESE_ID, GENERICA_ID_MIN, GENERICA_ID_MAX);
-		retorno = eDepende_buscarPorIdGenerica(listado, limite, id);
-		if(retorno < 0)
-		{
-			imprimirEnPantalla(GENERICA_MSJ_ID_NO_EXISTE);
-		}
-	}
-	while(retorno < 0);
-
-	return retorno;
-}
-
-
-
 int eDepende_estaVacio(eDepende listado[], int limite)
 {
 	int retorno = 1;
@@ -701,9 +659,59 @@ void eDepende_listar(eDepende listado[], int limite)
 	ejecutarEnConsola(HACER_PAUSA);
 }
 
+void eDepende_mostrarListadoPorIdGenerica(eDepende listado[], int limite, int idGenerica)
+{
+	int i;
+
+	for(i=0 ; i<limite ; i++)
+	{
+		if(listado[i].estado == OCUPADO && listado[i].idGenerica == idGenerica)
+		{
+			eDepende_mostrarUno(listado[i]);
+		}
+	}
+}
+
+
+void eDepende_pedirIdGenericaYListar(eDepende listadoDepende[], int limiteDepende, eGenerica listadoGenerica[], int limiteGenerica)
+{
+	int idGenerica;
+	int posicionGenerica;
+
+	do
+	{
+		ejecutarEnConsola(LIMPIAR_PANTALLA);
+		imprimirTitulo(DEPENDE_TITULO_LISTA_POR_ID_GENERICA); //titulo durante ingreso de ID
+
+		eGenerica_mostrarListado(listadoGenerica, limiteGenerica);
+		idGenerica = eGenerica_buscarPorId(listadoGenerica, limiteGenerica, idGenerica);
+		posicionGenerica = eGenerica_buscarPorId(listadoGenerica, limiteGenerica, idGenerica);
+		if(posicionGenerica < 0)
+		{
+			imprimirEnPantalla(GENERICA_MSJ_ID_NO_EXISTE);
+		}
+	}
+	while(posicionGenerica < 0);
+
+	ejecutarEnConsola(LIMPIAR_PANTALLA);
+	imprimirTitulo(DEPENDE_TITULO_LISTA_POR_ID_GENERICA);//titulo para listar
+
+	imprimirEnPantalla(GENERICA_CABECERA_LISTADO);
+	eGenerica_mostrarUno(listadoGenerica[posicionGenerica]);
+	imprimirEnPantalla(DEPENDE_CABECERA_LISTADO);
+	eDepende_mostrarListadoPorIdGenerica(listadoDepende, limiteDepende, idGenerica);
+
+	ejecutarEnConsola(HACER_PAUSA);
+}
+
 void eDepende_pedirNombre(char retorno[])
 {
 	pedirStringValido(retorno, DEPENDE_MSJ_INGRESE_NOMBRE, DEPENDE_MSJ_REINGRESE_NOMBRE, DEPENDE_LARGO_NOMBRE);
+}
+
+int eDepende_pedirNumero()
+{
+	return pedirIntValido(DEPENDE_MSJ_INGRESE_NUMERO, DEPENDE_MSJ_REINGRESE_NUMERO, DEPENDE_NUMERO_MIN, DEPENDE_NUMERO_MAX);
 }
 
 eDepende eDepende_pedirIngreso(eDepende listado[], int limite)
@@ -714,7 +722,7 @@ eDepende eDepende_pedirIngreso(eDepende listado[], int limite)
 
 	eDepende_pedirNombre((char *)&(retorno.nombre));
 
-	//retorno.demasCampos
+	retorno.numero = eDepende_pedirNumero();
 
 	retorno.estado = OCUPADO;
 
@@ -792,13 +800,14 @@ void eDepende_baja(eDepende listadoDepende[], int limiteDepende, eGenerica lista
 	ejecutarEnConsola(HACER_PAUSA);
 }
 
-void eDepende_modificarUno(eDepende registro[])
+int eDepende_modificarUno(eDepende registro[])
 {
 	eMenu menuModificar = {/*cantidad de opciones*/DEPENDE_MENU_MODIFICAR_UNO_CANT,
 							/*codigos*/{1,2,3,4,0},
 							/*descripciones*/{DEPENDE_MENU_MODIFICAR_UNO_DETALLE1,DEPENDE_MENU_MODIFICAR_UNO_DETALLE2,DEPENDE_MENU_MODIFICAR_UNO_DETALLE3,DEPENDE_MENU_MODIFICAR_UNO_DETALLE4,DEPENDE_MENU_MODIFICAR_UNO_DETALLE5},
 							/*titulo del menu*/{DEPENDE_MENU_MODIFICAR_UNO_TITULO}};
 	int opcion;
+	int huboCambios = 1;
 
 	ejecutarEnConsola(LIMPIAR_PANTALLA);
 	imprimirTitulo("MODIFICANDO REGISTRO");
@@ -812,7 +821,7 @@ void eDepende_modificarUno(eDepende registro[])
 			eDepende_pedirNombre((char *)&registro->nombre);
 			break;
 		case 2:
-			eDepende_pedirNombre((char *)&registro->nombre);
+			registro->numero = eDepende_pedirNumero();
 			break;
 		case 3:
 			//registro->idDepende;
@@ -821,8 +830,10 @@ void eDepende_modificarUno(eDepende registro[])
 			//registro->campoN;
 			break;
 		case 0:
+		    huboCambios = 0;
 			break;
 	}
+	return huboCambios;
 }
 
 void eDepende_modificacion(eDepende listado[], int limite)
@@ -830,6 +841,7 @@ void eDepende_modificacion(eDepende listado[], int limite)
 	eDepende registro;
 	char confirmacion;
 	int posicion;
+	int huboCambios;
 
 	ejecutarEnConsola(LIMPIAR_PANTALLA);
 	imprimirTitulo(DEPENDE_TITULO_MODIFICACION);
@@ -844,24 +856,31 @@ void eDepende_modificacion(eDepende listado[], int limite)
 		//traigo el registro del id elegido para no pisar directo sobre el listado
 		registro = listado[posicion];
 
-		eDepende_modificarUno(&registro);
-		eDepende_ordenar(listado, limite, DEPENDE_ORDEN);
-
-		/*if(aca se pregunta si hubo cambios que requieran reprocesar)
+		huboCambios = eDepende_modificarUno(&registro);
+		if(huboCambios == 1)
+    	{
+    		eDepende_ordenar(listado, limite, DEPENDE_ORDEN);
+    	
+			/*if(aca se pregunta si hubo cambios que requieran reprocesar)
+			{
+				se recalcularian promedios por ej.
+			}*/
+	
+			ejecutarEnConsola(LIMPIAR_PANTALLA);
+			imprimirTitulo(DEPENDE_TITULO_MODIFICACION);
+	
+			imprimirEnPantalla(DEPENDE_MSJ_REGISTRO_ACTUAL);
+			eDepende_mostrarUno(listado[posicion]);
+	
+			imprimirEnPantalla(DEPENDE_MSJ_REGISTRO_MODIFICADO);
+			eDepende_mostrarUno(registro);
+	
+			confirmacion = pedirConfirmacion(MSJ_CONFIRMA_CORRECTOS);
+		}
+		else
 		{
-			se recalcularian promedios por ej.
-		}*/
-
-		ejecutarEnConsola(LIMPIAR_PANTALLA);
-		imprimirTitulo(DEPENDE_TITULO_MODIFICACION);
-
-		imprimirEnPantalla(DEPENDE_MSJ_REGISTRO_ACTUAL);
-		eDepende_mostrarUno(listado[posicion]);
-
-		imprimirEnPantalla(DEPENDE_MSJ_REGISTRO_MODIFICADO);
-		eDepende_mostrarUno(registro);
-
-		confirmacion = pedirConfirmacion(MSJ_CONFIRMA_CORRECTOS);
+			confirmacion = 'N';
+		}
 
 		if(confirmacion == 'S')
 		{
@@ -1169,6 +1188,11 @@ void eEstadisticas_pedirNombre(char retorno[])
 	pedirStringValido(retorno, ESTADISTICAS_MSJ_INGRESE_NOMBRE, ESTADISTICAS_MSJ_REINGRESE_NOMBRE, ESTADISTICAS_LARGO_NOMBRE);
 }
 
+int eEstadisticas_pedirNumero()
+{
+	return pedirIntValido(ESTADISTICAS_MSJ_INGRESE_NUMERO, ESTADISTICAS_MSJ_REINGRESE_NUMERO, ESTADISTICAS_NUMERO_MIN, ESTADISTICAS_NUMERO_MAX);
+}
+
 eEstadisticas eEstadisticas_pedirIngreso(eEstadisticas listado[], int limite)
 {
 	eEstadisticas retorno;
@@ -1177,7 +1201,7 @@ eEstadisticas eEstadisticas_pedirIngreso(eEstadisticas listado[], int limite)
 
 	eEstadisticas_pedirNombre((char *)&(retorno.nombre));
 
-	//retorno.demasCampos
+	retorno.numero = eEstadisticas_pedirNumero();
 
 	retorno.estado = OCUPADO;
 
@@ -1255,13 +1279,14 @@ void eEstadisticas_baja(eEstadisticas listadoEstadisticas[], int limiteEstadisti
 	ejecutarEnConsola(HACER_PAUSA);
 }
 
-void eEstadisticas_modificarUno(eEstadisticas registro[])
+int eEstadisticas_modificarUno(eEstadisticas registro[])
 {
 	eMenu menuModificar = {/*cantidad de opciones*/ESTADISTICAS_MENU_MODIFICAR_UNO_CANT,
 							/*codigos*/{1,2,3,4,0},
 							/*descripciones*/{ESTADISTICAS_MENU_MODIFICAR_UNO_DETALLE1,ESTADISTICAS_MENU_MODIFICAR_UNO_DETALLE2,ESTADISTICAS_MENU_MODIFICAR_UNO_DETALLE3,ESTADISTICAS_MENU_MODIFICAR_UNO_DETALLE4,ESTADISTICAS_MENU_MODIFICAR_UNO_DETALLE5},
 							/*titulo del menu*/{ESTADISTICAS_MENU_MODIFICAR_UNO_TITULO}};
 	int opcion;
+	int huboCambios = 1;
 
 	ejecutarEnConsola(LIMPIAR_PANTALLA);
 	imprimirTitulo("MODIFICANDO REGISTRO");
@@ -1275,7 +1300,7 @@ void eEstadisticas_modificarUno(eEstadisticas registro[])
 			eEstadisticas_pedirNombre((char *)&registro->nombre);
 			break;
 		case 2:
-			eEstadisticas_pedirNombre((char *)&registro->nombre);
+			registro->numero = eEstadisticas_pedirNumero();
 			break;
 		case 3:
 			//registro->idEstadisticas;
@@ -1284,8 +1309,10 @@ void eEstadisticas_modificarUno(eEstadisticas registro[])
 			//registro->campoN;
 			break;
 		case 0:
+		    huboCambios = 0;
 			break;
 	}
+	return huboCambios;
 }
 
 void eEstadisticas_modificacion(eEstadisticas listado[], int limite)
@@ -1293,6 +1320,7 @@ void eEstadisticas_modificacion(eEstadisticas listado[], int limite)
 	eEstadisticas registro;
 	char confirmacion;
 	int posicion;
+	int huboCambios;
 
 	ejecutarEnConsola(LIMPIAR_PANTALLA);
 	imprimirTitulo(ESTADISTICAS_TITULO_MODIFICACION);
@@ -1307,24 +1335,31 @@ void eEstadisticas_modificacion(eEstadisticas listado[], int limite)
 		//traigo el registro del id elegido para no pisar directo sobre el listado
 		registro = listado[posicion];
 
-		eEstadisticas_modificarUno(&registro);
-		eEstadisticas_ordenar(listado, limite, ESTADISTICAS_ORDEN);
-
-		/*if(aca se pregunta si hubo cambios que requieran reprocesar)
+		huboCambios = eEstadisticas_modificarUno(&registro);
+		if(huboCambios == 1)
 		{
-			se recalcularian promedios por ej.
-		}*/
-
-		ejecutarEnConsola(LIMPIAR_PANTALLA);
-		imprimirTitulo(ESTADISTICAS_TITULO_MODIFICACION);
-
-		imprimirEnPantalla(ESTADISTICAS_MSJ_REGISTRO_ACTUAL);
-		eEstadisticas_mostrarUno(listado[posicion]);
-
-		imprimirEnPantalla(ESTADISTICAS_MSJ_REGISTRO_MODIFICADO);
-		eEstadisticas_mostrarUno(registro);
-
-		confirmacion = pedirConfirmacion(MSJ_CONFIRMA_CORRECTOS);
+			eEstadisticas_ordenar(listado, limite, ESTADISTICAS_ORDEN);
+	
+			/*if(aca se pregunta si hubo cambios que requieran reprocesar)
+			{
+				se recalcularian promedios por ej.
+			}*/
+	
+			ejecutarEnConsola(LIMPIAR_PANTALLA);
+			imprimirTitulo(ESTADISTICAS_TITULO_MODIFICACION);
+	
+			imprimirEnPantalla(ESTADISTICAS_MSJ_REGISTRO_ACTUAL);
+			eEstadisticas_mostrarUno(listado[posicion]);
+	
+			imprimirEnPantalla(ESTADISTICAS_MSJ_REGISTRO_MODIFICADO);
+			eEstadisticas_mostrarUno(registro);
+	
+			confirmacion = pedirConfirmacion(MSJ_CONFIRMA_CORRECTOS);
+		}
+		else
+		{
+			confirmacion = 'N';
+		}
 
 		if(confirmacion == 'S')
 		{

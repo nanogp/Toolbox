@@ -8,7 +8,8 @@
 
 #define GENERICA_CANT_MAX 10
 #define GENERICA_LARGO_NOMBRE 50
-#define GENERICA_LARGO_CLAVE 50
+#define GENERICA_NUMERO_MIN 1
+#define GENERICA_NUMERO_MAX 1
 #define GENERICA_ID_MIN 1
 #define GENERICA_ID_MAX 1000000
 #define GENERICA_ORDEN DEFINIR_MACRO_STRING(nombreAsc)
@@ -22,14 +23,13 @@
 #define GENERICA_MSJ_LISTA_VACIA DEFINIR_MACRO_STRING(\n\nLa lista esta vacia o todos los registros se dieron de baja)
 #define GENERICA_MSJ_NO_MAS_LUGAR DEFINIR_MACRO_STRING(\nNo hay mas lugares disponibles para altas de Generica)
 #define GENERICA_MSJ_INGRESE_ID DEFINIR_MACRO_STRING(\n\nIngrese el ID de Generica: \0)
-#define GENERICA_MSJ_REINGRESE_ID DEFINIR_MACRO_STRING(\nEl ID debe ser un n¡mero mayor que cero. Reingrese un ID valido: \0)
+#define GENERICA_MSJ_REINGRESE_ID DEFINIR_MACRO_STRING(\nEl ID debe ser un numero mayor que cero. Reingrese un ID valido: \0)
 #define GENERICA_MSJ_ID_NO_EXISTE DEFINIR_MACRO_STRING(\nEl ID de Generica ingresado no existe)
 #define GENERICA_MSJ_NOMBRE_NO_EXISTE DEFINIR_MACRO_STRING(\nEl nombre ingresado no existe)
 #define GENERICA_MSJ_INGRESE_NOMBRE DEFINIR_MACRO_STRING(\nIngrese nombre: \0)
 #define GENERICA_MSJ_REINGRESE_NOMBRE DEFINIR_MACRO_STRING(\nNombre muy largo. Reingrese por favor: \0)
-#define GENERICA_MSJ_INGRESE_CLAVE DEFINIR_MACRO_STRING(\nIngrese la clave: \0)
-#define GENERICA_MSJ_REINGRESE_CLAVE DEFINIR_MACRO_STRING(\nClave muy larga. Reingrese por favor: \0)
-#define GENERICA_MSJ_CLAVE_NO_COINCIDE DEFINIR_MACRO_STRING(\nLa clave ingresada no es correcta\0)
+#define GENERICA_MSJ_INGRESE_NUMERO DEFINIR_MACRO_STRING(\nIngrese numero: \0)
+#define GENERICA_MSJ_REINGRESE_NUMERO DEFINIR_MACRO_STRING(\nNumero no valido. Reingrese por favor: \0)
 #define GENERICA_MSJ_REINTENTAR_GESTION DEFINIR_MACRO_STRING(Desea reintentar la gestion?)
 #define GENERICA_MSJ_ALTA_OK DEFINIR_MACRO_STRING(\nEl Generica se dio de alta)
 #define GENERICA_MSJ_CONFIRMAR_BAJA DEFINIR_MACRO_STRING(Confirma que desea dar de baja dicho Generica?)
@@ -54,6 +54,8 @@
 
 #define DEPENDE_CANT_MAX 10
 #define DEPENDE_LARGO_NOMBRE 50
+#define DEPENDE_NUMERO_MIN 1
+#define DEPENDE_NUMERO_MAX 1
 #define DEPENDE_ID_MIN 1
 #define DEPENDE_ID_MAX 1000000
 #define DEPENDE_ORDEN DEFINIR_MACRO_STRING(nombreAsc)
@@ -62,16 +64,19 @@
 #define DEPENDE_TITULO_BAJA DEFINIR_MACRO_STRING(BAJA DE DEPENDE)
 #define DEPENDE_TITULO_MODIFICACION DEFINIR_MACRO_STRING(MODIFICACION DE DEPENDE)
 #define DEPENDE_TITULO_LISTA DEFINIR_MACRO_STRING(LISTADO DE DEPENDE)
+#define DEPENDE_TITULO_LISTA_POR_ID_GENERICA DEFINIR_MACRO_STRING(LISTADO DE DEPENDE POR CADA GENERICA)
 #define DEPENDE_MASCARA_MOSTRAR_UNO DEFINIR_MACRO_STRING(\n %d - %s - %d)
 #define DEPENDE_CABECERA_LISTADO DEFINIR_MACRO_STRING(\n ID  - nombre - edad)
 #define DEPENDE_MSJ_LISTA_VACIA DEFINIR_MACRO_STRING(\n\nLa lista esta vacia o todos los registros se dieron de baja)
 #define DEPENDE_MSJ_NO_MAS_LUGAR DEFINIR_MACRO_STRING(\nNo hay mas lugares disponibles para altas de Depende)
 #define DEPENDE_MSJ_INGRESE_ID DEFINIR_MACRO_STRING(\n\nIngrese el ID de Depende: \0)
-#define DEPENDE_MSJ_REINGRESE_ID DEFINIR_MACRO_STRING(\nEl ID debe ser un n¡mero mayor que cero. Reingrese un ID valido: \0)
+#define DEPENDE_MSJ_REINGRESE_ID DEFINIR_MACRO_STRING(\nEl ID debe ser un numero mayor que cero. Reingrese un ID valido: \0)
 #define DEPENDE_MSJ_ID_NO_EXISTE DEFINIR_MACRO_STRING(\nEl ID de Depende ingresado no existe)
 #define DEPENDE_MSJ_NOMBRE_NO_EXISTE DEFINIR_MACRO_STRING(\nEl nombre ingresado no existe)
 #define DEPENDE_MSJ_INGRESE_NOMBRE DEFINIR_MACRO_STRING(\nIngrese nombre: \0)
 #define DEPENDE_MSJ_REINGRESE_NOMBRE DEFINIR_MACRO_STRING(\nNombre muy largo. Reingrese por favor: \0)
+#define DEPENDE_MSJ_INGRESE_NUMERO DEFINIR_MACRO_STRING(\nIngrese numero: \0)
+#define DEPENDE_MSJ_REINGRESE_NUMERO DEFINIR_MACRO_STRING(\nNumero no valido. Reingrese por favor: \0)
 #define DEPENDE_MSJ_REINTENTAR_GESTION DEFINIR_MACRO_STRING(Desea reintentar la gestion?)
 #define DEPENDE_MSJ_ALTA_OK DEFINIR_MACRO_STRING(\nEl Depende se dio de alta)
 #define DEPENDE_MSJ_CONFIRMAR_BAJA DEFINIR_MACRO_STRING(Confirma que desea dar de baja dicho Depende?)
@@ -96,6 +101,8 @@
 
 #define ESTADISTICAS_CANT_MAX (GENERICA_CANT_MAX * DEPENDE_CANT_MAX)
 #define ESTADISTICAS_LARGO_NOMBRE 50
+#define ESTADISTICAS_NUMERO_MIN 1
+#define ESTADISTICAS_NUMERO_MAX 1
 #define ESTADISTICAS_ID_MIN 1
 #define ESTADISTICAS_ID_MAX 1000000
 #define ESTADISTICAS_ORDEN DEFINIR_MACRO_STRING(nombreAsc)
@@ -109,11 +116,13 @@
 #define ESTADISTICAS_MSJ_LISTA_VACIA DEFINIR_MACRO_STRING(\n\nLa lista esta vacia o todos los registros se dieron de baja)
 #define ESTADISTICAS_MSJ_NO_MAS_LUGAR DEFINIR_MACRO_STRING(\nNo hay mas lugares disponibles para altas de Estadisticas)
 #define ESTADISTICAS_MSJ_INGRESE_ID DEFINIR_MACRO_STRING(\n\nIngrese el ID de Estadisticas: \0)
-#define ESTADISTICAS_MSJ_REINGRESE_ID DEFINIR_MACRO_STRING(\nEl ID debe ser un n¡mero mayor que cero. Reingrese un ID valido: \0)
+#define ESTADISTICAS_MSJ_REINGRESE_ID DEFINIR_MACRO_STRING(\nEl ID debe ser un numero mayor que cero. Reingrese un ID valido: \0)
 #define ESTADISTICAS_MSJ_ID_NO_EXISTE DEFINIR_MACRO_STRING(\nEl ID de Estadisticas ingresado no existe)
 #define ESTADISTICAS_MSJ_NOMBRE_NO_EXISTE DEFINIR_MACRO_STRING(\nEl nombre ingresado no existe)
 #define ESTADISTICAS_MSJ_INGRESE_NOMBRE DEFINIR_MACRO_STRING(\nIngrese nombre: \0)
 #define ESTADISTICAS_MSJ_REINGRESE_NOMBRE DEFINIR_MACRO_STRING(\nNombre muy largo. Reingrese por favor: \0)
+#define ESTADISTICAS_MSJ_INGRESE_NUMERO DEFINIR_MACRO_STRING(\nIngrese numero: \0)
+#define ESTADISTICAS_MSJ_REINGRESE_NUMERO DEFINIR_MACRO_STRING(\nNumero no valido. Reingrese por favor: \0)
 #define ESTADISTICAS_MSJ_REINTENTAR_GESTION DEFINIR_MACRO_STRING(Desea reintentar la gestion?)
 #define ESTADISTICAS_MSJ_ALTA_OK DEFINIR_MACRO_STRING(\nEl Estadisticas se dio de alta)
 #define ESTADISTICAS_MSJ_CONFIRMAR_BAJA DEFINIR_MACRO_STRING(Confirma que desea dar de baja dicho Estadisticas?)
@@ -139,7 +148,7 @@
 typedef struct
 {
     char nombre[GENERICA_LARGO_NOMBRE];
-    char clave[GENERICA_LARGO_CLAVE];
+    int numero;
     //------------
     int idGenerica;
     int estado;
@@ -148,6 +157,7 @@ typedef struct
 typedef struct
 {
     char nombre[DEPENDE_LARGO_NOMBRE];
+    int numero;
     //------------
 	int idDepende;
     int idGenerica;
@@ -157,6 +167,7 @@ typedef struct
 typedef struct
 {
     char nombre[ESTADISTICAS_LARGO_NOMBRE];
+    int numero;
     //------------
 	int idEstadisticas;
     int idDepende;
@@ -281,7 +292,7 @@ void eGenerica_pedirNombre(char retorno[]);
  * \return void
  *
  */
-void eGenerica_pedirClave(char retorno[]);
+int eGenerica_pedirNumero();
 
 /** \brief
  *
@@ -313,10 +324,10 @@ void eGenerica_baja(eGenerica listado[], int limite);
 /** \brief
  *
  * \param registro[] eGenerica
- * \return void
+ * \return int
  *
  */
-void eGenerica_modificarUno(eGenerica registro[]);
+int eGenerica_modificarUno(eGenerica registro[]);
 
 /** \brief
  *
@@ -389,25 +400,6 @@ int eDepende_pedirIdYBuscar(eDepende listado[], int limite);
  *
  * \param listado[] eDepende
  * \param limite int
- * \param IdGenerica int
- * \return int
- *
- */
-int eDepende_buscarPorIdGenerica(eDepende listado[], int limite, int IdGenerica);
-
-/** \brief
- *
- * \param listado[] eDepende
- * \param limite int
- * \return int
- *
- */
-int eDepende_pedirIdGenericaYBuscar(eDepende listado[], int limite);
-
-/** \brief
- *
- * \param listado[] eDepende
- * \param limite int
  * \param nombre[] char
  * \return int
  *
@@ -469,11 +461,40 @@ void eDepende_listar(eDepende listado[], int limite);
 
 /** \brief
  *
+ * \param listado[] eDepende
+ * \param limite int
+ * \param idGenerica int
+ * \return void
+ *
+ */
+void eDepende_mostrarListadoPorIdGenerica(eDepende listado[], int limite, int idGenerica);
+
+/** \brief
+ *
+ * \param listadoDepende[] eDepende
+ * \param limiteDepende int
+ * \param listadoGenerica[] eGenerica
+ * \param limiteGenerica int
+ * \return void
+ *
+ */
+void eDepende_pedirIdGenericaYListar(eDepende listadoDepende[], int limiteDepende, eGenerica listadoGenerica[], int limiteGenerica);
+
+/** \brief
+ *
  * \param retorno[] char
  * \return void
  *
  */
 void eDepende_pedirNombre(char retorno[]);
+
+/** \brief
+ *
+ * \param retorno[] char
+ * \return void
+ *
+ */
+int eDepende_pedirNumero();
 
 /** \brief
  *
@@ -509,10 +530,10 @@ void eDepende_baja(eDepende listadoDepende[], int limiteDepende, eGenerica lista
 /** \brief
  *
  * \param registro[] eDepende
- * \return void
+ * \return int
  *
  */
-void eDepende_modificarUno(eDepende registro[]);
+int eDepende_modificarUno(eDepende registro[]);
 
 /** \brief
  *
@@ -673,6 +694,14 @@ void eEstadisticas_pedirNombre(char retorno[]);
 
 /** \brief
  *
+ * \param retorno[] char
+ * \return void
+ *
+ */
+int eEstadisticas_pedirNumero();
+
+/** \brief
+ *
  * \param listado[] eEstadisticas
  * \param limite int
  * \return eEstadisticas
@@ -705,10 +734,10 @@ void eEstadisticas_baja(eEstadisticas listadoEstadisticas[], int limiteEstadisti
 /** \brief
  *
  * \param registro[] eEstadisticas
- * \return void
+ * \return int
  *
  */
-void eEstadisticas_modificarUno(eEstadisticas registro[]);
+int eEstadisticas_modificarUno(eEstadisticas registro[]);
 
 /** \brief
  *
