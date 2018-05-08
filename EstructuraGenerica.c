@@ -171,9 +171,9 @@ int eGenerica_estaVacio(eGenerica listado[], int limite)
 	return retorno;
 }
 
-void eGenerica_mostrarUno(eGenerica parametro)
+void eGenerica_mostrarUno(eGenerica registro)
 {
-	 printf(GENERICA_MASCARA_MOSTRAR_UNO, parametro.idGenerica, parametro.nombre, parametro.estado);
+	 printf(GENERICA_MASCARA_MOSTRAR_UNO, registro.idGenerica, registro.nombre, registro.numero);
 
 }
 
@@ -612,9 +612,9 @@ int eDepende_estaVacio(eDepende listado[], int limite)
 	return retorno;
 }
 
-void eDepende_mostrarUno(eDepende parametro)
+void eDepende_mostrarUno(eDepende registro)
 {
-	 printf(DEPENDE_MASCARA_MOSTRAR_UNO, parametro.idDepende, parametro.nombre, parametro.estado);
+	 printf(DEPENDE_MASCARA_MOSTRAR_UNO, registro.idDepende, registro.idGenerica, registro.nombre, registro.numero);
 
 }
 
@@ -1136,9 +1136,9 @@ int eEstadisticas_estaVacio(eEstadisticas listado[], int limite)
 	return retorno;
 }
 
-void eEstadisticas_mostrarUno(eEstadisticas parametro)
+void eEstadisticas_mostrarUno(eEstadisticas registro)
 {
-	 printf(ESTADISTICAS_MASCARA_MOSTRAR_UNO, parametro.idEstadisticas, parametro.nombre, parametro.estado);
+	 printf(ESTADISTICAS_MASCARA_MOSTRAR_UNO, registro.idEstadisticas, registro.idDepende, registro.nombre, registro.numero);
 
 }
 
