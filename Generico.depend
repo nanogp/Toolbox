@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1525302498 source:d:\github\toolbox\estructuragenerica.c
+1525894653 source:d:\github\toolbox\estructuragenerica.c
 	"EstructuraGenerica.h"
 	"General.h"
 	"Menu.h"
@@ -7,26 +7,27 @@
 	<stdlib.h>
 	<string.h>
 
-1525302401 d:\github\toolbox\estructuragenerica.h
+1525894685 d:\github\toolbox\estructuragenerica.h
 
-1525283521 d:\github\toolbox\general.h
+1525791705 d:\github\toolbox\general.h
 
-1525281191 d:\github\toolbox\menu.h
+1525791705 d:\github\toolbox\menu.h
 
-1525293842 source:d:\github\toolbox\general.c
+1525791705 source:d:\github\toolbox\general.c
 	"General.h"
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
 
-1525302302 source:d:\github\toolbox\main.c
+1525893680 source:d:\github\toolbox\main.c
 	<stdio.h>
 	<stdlib.h>
 	"General.h"
 	"Menu.h"
 	"EstructuraGenerica.h"
+	"EstructuraDepende.h"
 
-1525296503 source:d:\github\toolbox\menu.c
+1525791705 source:d:\github\toolbox\menu.c
 	<stdio.h>
 	"Menu.h"
 	"General.h"
@@ -62,4 +63,15 @@
 	<stdio.h>
 	"Menu.h"
 	"General.h"
+
+1525894236 source:d:\github\toolbox\estructuradepende.c
+	"EstructuraDepende.h"
+	"General.h"
+	"Menu.h"
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1525894037 d:\github\toolbox\estructuradepende.h
+	"EstructuraGenerica.h"
 
