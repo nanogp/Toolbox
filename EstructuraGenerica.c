@@ -271,9 +271,10 @@ void eGenerica_baja(eGenerica listado[], int limite)
 	{
 		ejecutarEnConsola(LIMPIAR_PANTALLA);
 		imprimirTitulo(GENERICA_TITULO_BAJA);
-		//imprimirEnPantalla(GENERICA_CABECERA_LISTADO);
 
 		posicion = eGenerica_pedirIdYBuscar(listado, limite);
+
+		imprimirEnPantalla(GENERICA_CABECERA_LISTADO);
 		eGenerica_mostrarUno(listado[posicion]);
 
 		confirmacion = pedirConfirmacion(GENERICA_MSJ_CONFIRMAR_BAJA);
