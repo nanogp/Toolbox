@@ -1,0 +1,44 @@
+# depslib dependency file v1.0
+1526066690 source:c:\test\mponti\parcial1\general.c
+	"General.h"
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1526066690 c:\test\mponti\parcial1\general.h
+
+1526077484 source:c:\test\mponti\parcial1\main.c
+	<stdio.h>
+	<stdlib.h>
+	"General.h"
+	"Menu.h"
+	"Propietario.h"
+	"Automovil.h"
+
+1526066690 c:\test\mponti\parcial1\menu.h
+
+1526078001 c:\test\mponti\parcial1\propietario.h
+	"General.h"
+	"Menu.h"
+
+1526066690 source:c:\test\mponti\parcial1\menu.c
+	<stdio.h>
+	"Menu.h"
+	"General.h"
+
+1526077453 source:c:\test\mponti\parcial1\propietario.c
+	"Propietario.h"
+	<stdio.h>
+	<string.h>
+
+1526077569 source:c:\test\mponti\parcial1\automovil.c
+	"General.h"
+	"Automovil.h"
+	"Menu.h"
+	<stdio.h>
+	<string.h>
+
+1526076972 c:\test\mponti\parcial1\automovil.h
+	"General.h"
+	"Propietario.h"
+
