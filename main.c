@@ -5,12 +5,12 @@
 #include "EstructuraGenerica.h"
 #include "EstructuraDepende.h"
 
-#define MAIN_MENU_GESTION_TITULO DEFINIR_MACRO_STRING(MENU GENERICO)
+#define MAIN_MENU_GESTION_TITULO "MENU GENERICO"
 #define MAIN_MENU_GESTION_CANT 4
-#define MAIN_MENU_GESTION_DETALLE1 DEFINIR_MACRO_STRING(1. Gestionar Generica)
-#define MAIN_MENU_GESTION_DETALLE2 DEFINIR_MACRO_STRING(2. Gestionar Depende)
-#define MAIN_MENU_GESTION_DETALLE3 DEFINIR_MACRO_STRING(3. Gestionar Estadisticas)
-#define MAIN_MENU_GESTION_DETALLE4 DEFINIR_MACRO_STRING(0. Salir del programa)
+#define MAIN_MENU_GESTION_DETALLE1 "1. Gestionar Generica"
+#define MAIN_MENU_GESTION_DETALLE2 "2. Gestionar Depende"
+#define MAIN_MENU_GESTION_DETALLE3 "3. Gestionar Estadisticas"
+#define MAIN_MENU_GESTION_DETALLE4 "0. Salir del programa"
 
 int main()
 {

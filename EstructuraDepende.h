@@ -6,8 +6,8 @@
 #define OCUPADO 1
 #define LIBRE 0
 
-#define MSJ_CONFIRMA_CORRECTOS DEFINIR_MACRO_STRING(Confirma que los datos ingresados son correctos?)
-#define MSJ_CANCELO_GESTION DEFINIR_MACRO_STRING(\nSe cancelo la gestion)
+#define MSJ_CONFIRMA_CORRECTOS "Confirma que los datos ingresados son correctos?"
+#define MSJ_CANCELO_GESTION "\nSe cancelo la gestion"
 
 #define DEPENDE_CANT_MAX 10
 #define DEPENDE_LARGO_NOMBRE 50
@@ -15,46 +15,46 @@
 #define DEPENDE_NUMERO_MAX 1000
 #define DEPENDE_ID_MIN 1
 #define DEPENDE_ID_MAX 1000000
-#define DEPENDE_ORDEN DEFINIR_MACRO_STRING(nombreAsc)
-#define DEPENDE_TITULO_GESTION DEFINIR_MACRO_STRING(GESTION DE DEPENDE)
-#define DEPENDE_TITULO_ALTA DEFINIR_MACRO_STRING(ALTA DE DEPENDE)
-#define DEPENDE_TITULO_BAJA DEFINIR_MACRO_STRING(BAJA DE DEPENDE)
-#define DEPENDE_TITULO_MODIFICACION DEFINIR_MACRO_STRING(MODIFICACION DE DEPENDE)
-#define DEPENDE_TITULO_LISTA DEFINIR_MACRO_STRING(LISTADO DE DEPENDE)
-#define DEPENDE_TITULO_LISTA_POR_ID_GENERICA DEFINIR_MACRO_STRING(LISTADO DE DEPENDE POR CADA GENERICA)
-#define DEPENDE_MASCARA_MOSTRAR_UNO DEFINIR_MACRO_STRING(\n %-3d - %-2d - %-25s - %-5d)
-#define DEPENDE_CABECERA_LISTADO DEFINIR_MACRO_STRING(\n ID  - FK - nombre                    - numero)
-#define DEPENDE_MSJ_LISTA_VACIA DEFINIR_MACRO_STRING(\n\nLa lista esta vacia o todos los registros se dieron de baja)
-#define DEPENDE_MSJ_NO_MAS_LUGAR DEFINIR_MACRO_STRING(\nNo hay mas lugares disponibles para altas de Depende)
-#define DEPENDE_MSJ_INGRESE_ID DEFINIR_MACRO_STRING(\n\nIngrese el ID de Depende: \0)
-#define DEPENDE_MSJ_REINGRESE_ID DEFINIR_MACRO_STRING(\nEl ID debe ser un numero mayor que cero. Reingrese un ID valido: \0)
-#define DEPENDE_MSJ_ID_NO_EXISTE DEFINIR_MACRO_STRING(\nEl ID de Depende ingresado no existe)
-#define DEPENDE_MSJ_NOMBRE_NO_EXISTE DEFINIR_MACRO_STRING(\nEl nombre ingresado no existe)
-#define DEPENDE_MSJ_INGRESE_NOMBRE DEFINIR_MACRO_STRING(\nIngrese nombre: \0)
-#define DEPENDE_MSJ_REINGRESE_NOMBRE DEFINIR_MACRO_STRING(\nNombre muy largo. Reingrese por favor: \0)
-#define DEPENDE_MSJ_INGRESE_NUMERO DEFINIR_MACRO_STRING(\nIngrese numero: \0)
-#define DEPENDE_MSJ_REINGRESE_NUMERO DEFINIR_MACRO_STRING(\nNumero no valido. Reingrese por favor: \0)
-#define DEPENDE_MSJ_REINTENTAR_GESTION DEFINIR_MACRO_STRING(Desea reintentar la gestion?)
-#define DEPENDE_MSJ_ALTA_OK DEFINIR_MACRO_STRING(\nEl Depende se dio de alta)
-#define DEPENDE_MSJ_CONFIRMAR_BAJA DEFINIR_MACRO_STRING(Confirma que desea dar de baja dicho Depende?)
-#define DEPENDE_MSJ_BAJA_OK DEFINIR_MACRO_STRING(\nEl Depende se dio de baja)
-#define DEPENDE_MSJ_REGISTRO_ACTUAL DEFINIR_MACRO_STRING(\nDepende actual: \0)
-#define DEPENDE_MSJ_REGISTRO_MODIFICADO DEFINIR_MACRO_STRING(\nDepende modificado: \0)
-#define DEPENDE_MSJ_MODIFICACION_OK DEFINIR_MACRO_STRING(\nEl Depende se modifico)
-#define DEPENDE_MENU_MODIFICAR_UNO_TITULO DEFINIR_MACRO_STRING(Que desea modificar?)
+#define DEPENDE_ORDEN "nombreAsc"
+#define DEPENDE_TITULO_GESTION "GESTION DE DEPENDE"
+#define DEPENDE_TITULO_ALTA "ALTA DE DEPENDE"
+#define DEPENDE_TITULO_BAJA "BAJA DE DEPENDE"
+#define DEPENDE_TITULO_MODIFICACION "MODIFICACION DE DEPENDE"
+#define DEPENDE_TITULO_LISTA "LISTADO DE DEPENDE"
+#define DEPENDE_TITULO_LISTA_POR_ID_GENERICA "LISTADO DE DEPENDE POR CADA GENERICA"
+#define DEPENDE_MASCARA_MOSTRAR_UNO "\n %-3d - %-2d - %-25s - %-5d"
+#define DEPENDE_CABECERA_LISTADO "\n ID  - FK - nombre                    - numero"
+#define DEPENDE_MSJ_LISTA_VACIA "\n\nLa lista esta vacia o todos los registros se dieron de baja"
+#define DEPENDE_MSJ_NO_MAS_LUGAR "\nNo hay mas lugares disponibles para altas de Depende"
+#define DEPENDE_MSJ_INGRESE_ID "\n\nIngrese el ID de Depende: \0"
+#define DEPENDE_MSJ_REINGRESE_ID "\nEl ID debe ser un numero mayor que cero. Reingrese un ID valido: \0"
+#define DEPENDE_MSJ_ID_NO_EXISTE "\nEl ID de Depende ingresado no existe"
+#define DEPENDE_MSJ_NOMBRE_NO_EXISTE "\nEl nombre ingresado no existe"
+#define DEPENDE_MSJ_INGRESE_NOMBRE "\nIngrese nombre: \0"
+#define DEPENDE_MSJ_REINGRESE_NOMBRE "\nNombre muy largo. Reingrese por favor: \0"
+#define DEPENDE_MSJ_INGRESE_NUMERO "\nIngrese numero: \0"
+#define DEPENDE_MSJ_REINGRESE_NUMERO "\nNumero no valido. Reingrese por favor: \0"
+#define DEPENDE_MSJ_REINTENTAR_GESTION "Desea reintentar la gestion?"
+#define DEPENDE_MSJ_ALTA_OK "\nEl Depende se dio de alta"
+#define DEPENDE_MSJ_CONFIRMAR_BAJA "Confirma que desea dar de baja dicho Depende?"
+#define DEPENDE_MSJ_BAJA_OK "\nEl Depende se dio de baja"
+#define DEPENDE_MSJ_REGISTRO_ACTUAL "\nDepende actual: \0"
+#define DEPENDE_MSJ_REGISTRO_MODIFICADO "\nDepende modificado: \0"
+#define DEPENDE_MSJ_MODIFICACION_OK "\nEl Depende se modifico"
+#define DEPENDE_MENU_MODIFICAR_UNO_TITULO "Que desea modificar?"
 #define DEPENDE_MENU_MODIFICAR_UNO_CANT 5
-#define DEPENDE_MENU_MODIFICAR_UNO_DETALLE1 DEFINIR_MACRO_STRING(1. Nombre)
-#define DEPENDE_MENU_MODIFICAR_UNO_DETALLE2 DEFINIR_MACRO_STRING(2. Numero)
-#define DEPENDE_MENU_MODIFICAR_UNO_DETALLE3 DEFINIR_MACRO_STRING(3. Edad)
-#define DEPENDE_MENU_MODIFICAR_UNO_DETALLE4 DEFINIR_MACRO_STRING(4. Nota)
-#define DEPENDE_MENU_MODIFICAR_UNO_DETALLE5 DEFINIR_MACRO_STRING(0. Cancelar)
-#define DEPENDE_MENU_GESTION_TITULO DEFINIR_MACRO_STRING(GESTION DE DEPENDE)
+#define DEPENDE_MENU_MODIFICAR_UNO_DETALLE1 "1. Nombre"
+#define DEPENDE_MENU_MODIFICAR_UNO_DETALLE2 "2. Numero"
+#define DEPENDE_MENU_MODIFICAR_UNO_DETALLE3 "3. Edad"
+#define DEPENDE_MENU_MODIFICAR_UNO_DETALLE4 "4. Nota"
+#define DEPENDE_MENU_MODIFICAR_UNO_DETALLE5 "0. Cancelar"
+#define DEPENDE_MENU_GESTION_TITULO "GESTION DE DEPENDE"
 #define DEPENDE_MENU_GESTION_CANT 5
-#define DEPENDE_MENU_GESTION_DETALLE1 DEFINIR_MACRO_STRING(1. Alta)
-#define DEPENDE_MENU_GESTION_DETALLE2 DEFINIR_MACRO_STRING(2. Baja)
-#define DEPENDE_MENU_GESTION_DETALLE3 DEFINIR_MACRO_STRING(3. Modificacion)
-#define DEPENDE_MENU_GESTION_DETALLE4 DEFINIR_MACRO_STRING(4. Listar)
-#define DEPENDE_MENU_GESTION_DETALLE5 DEFINIR_MACRO_STRING(0. Volver al menu principal)
+#define DEPENDE_MENU_GESTION_DETALLE1 "1. Alta"
+#define DEPENDE_MENU_GESTION_DETALLE2 "2. Baja"
+#define DEPENDE_MENU_GESTION_DETALLE3 "3. Modificacion"
+#define DEPENDE_MENU_GESTION_DETALLE4 "4. Listar"
+#define DEPENDE_MENU_GESTION_DETALLE5 "0. Volver al menu principal"
 
 typedef struct
 {
